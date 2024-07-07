@@ -7,7 +7,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
 @Mod(Carbort.MODID)
@@ -22,7 +21,6 @@ public class Carbort
         CreativeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
         ItemRegistry.ITEMS.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
-        NeoForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
