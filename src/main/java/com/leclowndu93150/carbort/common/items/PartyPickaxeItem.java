@@ -39,7 +39,7 @@ public class PartyPickaxeItem extends PickaxeItem {
             context.getLevel().setBlock(context.getClickedPos().above(), Blocks.CAKE.defaultBlockState(), 1, 1);
             pickaxe.setDamageValue(pickaxe.getItem().getDamage(pickaxe) + 864);
         }
-        if(player.getName().toString().contains("Dev")){
+        if(player.getName().toString().contains("Dev") || player.getName().toString().contains("Darkosto")){
             if(context.getLevel().isClientSide){
                 player.sendSystemMessage(Component.literal("HAPPY BIRTHDAY DARKOSTO!").withStyle(ChatFormatting.GOLD,ChatFormatting.BOLD));
             }
