@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "size=1": { "model": "carbort:block/carrot_cake_slice6"},
+    "size=2": { "model": "carbort:block/carrot_cake_slice5" },
+    "size=3": { "model": "carbort:block/carrot_cake_slice4"},
+    "size=4": { "model": "carbort:block/carrot_cake_slice3" },
+    "size=5": { "model": "carbort:block/carrot_cake_slice2"},
+    "size=6": { "model": "carbort:block/carrot_cake_slice1" },
+    "size=7": { "model": "carbort:block/carrot_cake"}
+  }
+}
