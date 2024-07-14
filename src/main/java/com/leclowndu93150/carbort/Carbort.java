@@ -20,6 +20,7 @@ public class Carbort {
         CreativeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
         ItemRegistry.ITEMS.register(modEventBus);
         BlockRegistry.BLOCKS.register(modEventBus);
+        BlockEntityRegistry.REGISTER.register(modEventBus);
         EffectRegistry.EFFECTS.register(modEventBus);
         EffectRegistry.POTIONS.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
@@ -27,6 +28,6 @@ public class Carbort {
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        LOGGER.info("I hope i did thing right.");
+        LOGGER.info("[Carbort]: I hope i did things right.");
     }
 }
