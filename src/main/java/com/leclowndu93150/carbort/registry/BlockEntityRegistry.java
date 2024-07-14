@@ -6,8 +6,10 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class BlockEntityRegistry {
-    public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Carbort.MODID)
+import java.util.function.Supplier;
 
-    public static final DeferredRegister<BlockEntityType<SmileyCloudBlockEntity>> SMILEY_CLOUD = REGISTER.register("smiley_cloud", () -> BlockEntityType.Builder.of(SmileyCloudBlockEntity::new, BlockRegistry.SMILEY_CLOUD.get()).build(null));
+public class BlockEntityRegistry {
+    public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Carbort.MODID);
+
+    public static final Supplier<BlockEntityType<SmileyCloudBlockEntity>> SMILEY_CLOUD = REGISTER.register("smiley_cloud", () -> BlockEntityType.Builder.of(SmileyCloudBlockEntity::new, BlockRegistry.SMILEY_CLOUD.get()).build(null));
 }
