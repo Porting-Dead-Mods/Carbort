@@ -2,15 +2,11 @@ package com.leclowndu93150.carbort.common.items;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
@@ -26,10 +22,14 @@ public class HealingAxeItem extends AxeItem {
     }
 
     @Override
+    public int getDamage(ItemStack stack) {
+        return 0;
+    }
+
+    @Override
     public boolean isDamageable(ItemStack stack) {
         return false;
     }
-
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
