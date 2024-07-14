@@ -6,7 +6,6 @@ public class FoodRegistry {
     public FoodRegistry(){
 
     }
-
     public CakeFlavour CAKE_FLAVOUR_CHOCOLATE = new CakeFlavour("chocolate");
     public CakeFlavour CAKE_FLAVOUR_STRAWBERRY = new CakeFlavour("strawberry");
     public CakeFlavour CAKE_FLAVOUR_MINT = new CakeFlavour("mint");

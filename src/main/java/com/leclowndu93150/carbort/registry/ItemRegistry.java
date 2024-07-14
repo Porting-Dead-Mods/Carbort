@@ -13,5 +13,7 @@ public class ItemRegistry {
 
     public static final DeferredItem<Item> PARTY_PICKAXE = ITEMS.register("party_pickaxe", () -> new PartyPickaxeItem(new Item.Properties()));
 
+    public static final DeferredItem<Item> TORMENTED_SOUL = ITEMS.register("tormented_soul", ()->new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
 }
