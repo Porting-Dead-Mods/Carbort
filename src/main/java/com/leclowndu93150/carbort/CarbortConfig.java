@@ -14,7 +14,7 @@ public class CarbortConfig {
             .defineInRange("chunk_analyzer_energy_usage", 0, 0, Integer.MAX_VALUE);
     private static final ModConfigSpec.IntValue CHUNK_ANALYZER_MAX_ENERGY = BUILDER
             .comment("Configure the maximum amount of energy the chunk analyzer can hold. Setting this to 0 will disable energy on the chunk analyzer.")
-            .defineInRange("chunk_analyzer_max_energy", 1000, 0, Integer.MAX_VALUE);
+            .defineInRange("chunk_analyzer_max_energy", 0, 0, Integer.MAX_VALUE);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 

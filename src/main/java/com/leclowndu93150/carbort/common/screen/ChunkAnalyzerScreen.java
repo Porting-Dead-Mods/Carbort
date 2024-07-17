@@ -52,7 +52,9 @@ public class ChunkAnalyzerScreen extends AbstractContainerScreen<ChunkAnalyzerMe
     @Override
     protected void init() {
         super.init();
-        this.inventoryLabelY = 10000;
+        this.titleLabelX = 4;
+        this.titleLabelY = 20;
+        this.inventoryLabelY = -500;
         this.imageWidth = 190;
         this.imageHeight = 136;
         int btnX = (width + imageWidth) / 2 - 32;

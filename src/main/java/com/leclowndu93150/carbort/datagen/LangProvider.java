@@ -17,6 +17,7 @@ public class LangProvider {
                 add("itemGroup.carbort", "Carbort");
                 add("item.carbort.party_pickaxe", "Party Pickaxe");
                 add("item.carbort.healing_axe", "Healing Axe");
+                add("item.carbort.chunk_analyzer", "Chunk Analyzer");
                 //Im too lazy deal with it
             }
         });
