@@ -10,6 +10,8 @@ import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.Collections;
+
 public class ItemRegistry {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Carbort.MODID);

@@ -4,9 +4,9 @@ import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.common.energy.ItemStackEnergyStorage;
 import com.leclowndu93150.carbort.common.items.HealingAxeItem;
 import com.leclowndu93150.carbort.common.energy.IEnergyItem;
-import com.leclowndu93150.carbort.common.screen.ChunkAnalyzerMenu;
 import com.leclowndu93150.carbort.common.screen.ChunkAnalyzerScreen;
-import com.leclowndu93150.carbort.networking.ChunkAnalyzerPayload;
+import com.leclowndu93150.carbort.networking.ChunkAnalyzerDataPayload;
+import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;
 import com.leclowndu93150.carbort.networking.PayloadActions;
 import com.leclowndu93150.carbort.registry.MenuRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -14,16 +14,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.energy.ComponentEnergyStorage;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
-import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -62,7 +59,8 @@ public class CarbortEvents {
         @SubscribeEvent
         public static void registerPayloads(RegisterPayloadHandlersEvent event) {
             PayloadRegistrar registrar = event.registrar(Carbort.MODID);
-            registrar.playBidirectional(ChunkAnalyzerPayload.TYPE, ChunkAnalyzerPayload.STREAM_CODEC, PayloadActions::chunkAnalyzerAction);
+            registrar.playBidirectional(ChunkAnalyzerTogglePayload.TYPE, ChunkAnalyzerTogglePayload.STREAM_CODEC, PayloadActions::chunkAnalyzerAction);
+            registrar.playToClient(ChunkAnalyzerDataPayload.TYPE, ChunkAnalyzerDataPayload.STREAM_CODEC, PayloadActions::chunkAnalyzerData);
         }
 
         @SubscribeEvent

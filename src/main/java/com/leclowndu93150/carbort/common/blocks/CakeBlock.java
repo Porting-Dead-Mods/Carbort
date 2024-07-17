@@ -1,11 +1,18 @@
 package com.leclowndu93150.carbort.common.blocks;
 
+import com.leclowndu93150.carbort.Carbort;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -37,6 +44,11 @@ public class CakeBlock extends PlaceableFoodBlock{
     @Override
     public int getSliceNutritionValue() {
         return 6;
+    }
+
+    @Override
+    public InteractionResult use(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand p_60507_, @NotNull BlockHitResult p_60508_) {
+        return super.use(state, level, pos, player, p_60507_, p_60508_);
     }
 
     static {

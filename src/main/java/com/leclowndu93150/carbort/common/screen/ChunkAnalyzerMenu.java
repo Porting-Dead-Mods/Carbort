@@ -11,12 +11,8 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class ChunkAnalyzerMenu extends AbstractContainerMenu {
-
-    public final ChunkAnalyzerHelper helper;
-
     public ChunkAnalyzerMenu(Player player, int containerId) {
         super(MenuRegistry.CHUNK_ANALYZER_MENU.get(), containerId);
-        this.helper = new ChunkAnalyzerHelper(player, player.level());
     }
 
     public ChunkAnalyzerMenu(int id, Inventory inventory, RegistryFriendlyByteBuf data) {
