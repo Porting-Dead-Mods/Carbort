@@ -1,10 +1,7 @@
 package com.leclowndu93150.carbort.registry;
 
 import com.leclowndu93150.carbort.Carbort;
-import com.leclowndu93150.carbort.common.items.BeanItem;
-import com.leclowndu93150.carbort.common.items.ChunkAnalyzerItem;
-import com.leclowndu93150.carbort.common.items.HealingAxeItem;
-import com.leclowndu93150.carbort.common.items.PartyPickaxeItem;
+import com.leclowndu93150.carbort.common.items.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
