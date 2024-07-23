@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "carbort:block/bean_crop_age_0"
+    },
+    "age=1": {
+      "model": "carbort:block/bean_crop_age_1"
+    },
+    "age=2": {
+      "model": "carbort:block/bean_crop_age_2"
+    },
+    "age=3": {
+      "model": "carbort:block/bean_crop_age_3"
+    },
+    "age=4": {
+      "model": "carbort:block/bean_crop_age_4"
+    }
+  }
+}

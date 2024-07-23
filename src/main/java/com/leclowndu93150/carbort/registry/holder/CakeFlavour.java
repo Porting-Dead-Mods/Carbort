@@ -17,10 +17,11 @@ public class CakeFlavour {
     public DeferredItem<Item> CAKE_ITEM;
     public DeferredBlock<Block> CAKE_BLOCK;
     public String Flavor;
-    public CakeFlavour(String flavor){
+
+    public CakeFlavour(String flavor) {
         Flavor = flavor;
-        BITE = ItemRegistry.ITEMS.register(Flavor + "_bite", ()-> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationModifier(2f).build())));
+        BITE = ItemRegistry.ITEMS.register(Flavor + "_bite", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationModifier(2f).build())));
         CAKE_BLOCK = BlockRegistry.BLOCKS.register(Flavor + "_cake", () -> new CakeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE), BITE));
-        CAKE_ITEM = ItemRegistry.ITEMS.register(Flavor + "_cake", ()-> new BlockItem(CAKE_BLOCK.get(),new Item.Properties()));
+        CAKE_ITEM = ItemRegistry.ITEMS.register(Flavor + "_cake", () -> new BlockItem(CAKE_BLOCK.get(), new Item.Properties()));
     }
 }

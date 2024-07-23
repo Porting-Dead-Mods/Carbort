@@ -1,7 +1,9 @@
 package com.leclowndu93150.carbort.registry;
 
 import com.leclowndu93150.carbort.Carbort;
+import com.leclowndu93150.carbort.common.blocks.BeanCropBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -17,4 +19,7 @@ public class BlockRegistry {
                     .explosionResistance(10.0f)
                     .sound(SoundType.WOOL)
             ));
+
+    public static final DeferredBlock<BeanCropBlock> BEANS = BLOCKS.register("beans",
+            () -> new BeanCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
 }

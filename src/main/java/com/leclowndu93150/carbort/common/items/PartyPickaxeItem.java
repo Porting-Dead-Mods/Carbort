@@ -14,6 +14,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -30,18 +31,18 @@ public class PartyPickaxeItem extends PickaxeItem {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(UseOnContext context) {
         ItemStack pickaxe = context.getItemInHand();
         Player player = context.getPlayer();
-        int durability = pickaxe.getItem().getMaxDamage(pickaxe)-pickaxe.getItem().getDamage(pickaxe);
+        int durability = pickaxe.getItem().getMaxDamage(pickaxe) - pickaxe.getItem().getDamage(pickaxe);
         BlockState blockAbove = context.getLevel().getBlockState(context.getClickedPos().above());
-        if(durability>= 865 && context.getClickedFace() == Direction.UP && blockAbove.isAir()){
+        if (durability >= 865 && context.getClickedFace() == Direction.UP && blockAbove.isAir()) {
             context.getLevel().setBlock(context.getClickedPos().above(), Blocks.CAKE.defaultBlockState(), 1, 1);
             pickaxe.setDamageValue(pickaxe.getItem().getDamage(pickaxe) + 864);
         }
-        if(player.getName().toString().contains("Dev") || player.getName().toString().contains("Darkosto")){
-            if(context.getLevel().isClientSide){
-                player.sendSystemMessage(Component.literal("HAPPY BIRTHDAY DARKOSTO!").withStyle(ChatFormatting.GOLD,ChatFormatting.BOLD));
+        if (player.getName().toString().contains("Dev") || player.getName().toString().contains("Darkosto")) {
+            if (context.getLevel().isClientSide) {
+                player.sendSystemMessage(Component.literal("HAPPY BIRTHDAY DARKOSTO!").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
             }
             FireworkRocketEntity firework = new FireworkRocketEntity(context.getLevel(), player.position().x, player.position().y, player.position().z, new ItemStack(Blocks.CAKE));
             firework.setPos(context.getClickLocation().x, context.getClickLocation().y, context.getClickLocation().z);
