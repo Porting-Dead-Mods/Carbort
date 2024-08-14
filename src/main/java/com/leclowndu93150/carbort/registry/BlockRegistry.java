@@ -20,6 +20,14 @@ public class BlockRegistry {
                     .sound(SoundType.WOOL)
             ));
 
+    public static final DeferredBlock<Block> ONLINE_DETECTOR = BLOCKS.register(
+            "online_detector",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .destroyTime(2.0f)
+                    .explosionResistance(10.0f)
+                    .sound(SoundType.STONE)
+            ));
+
     public static final DeferredBlock<BeanCropBlock> BEANS = BLOCKS.register("beans",
             () -> new BeanCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
 }

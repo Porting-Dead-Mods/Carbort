@@ -1,8 +1,7 @@
-package com.leclowndu93150.carbort.common.screen;
+package com.leclowndu93150.carbort.common.screen.ChunkAnalyzer;
 
 import com.leclowndu93150.carbort.common.items.ChunkAnalyzerItem;
 import com.leclowndu93150.carbort.registry.MenuRegistry;
-import com.leclowndu93150.carbort.utils.ChunkAnalyzerHelper;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

@@ -1,24 +1,19 @@
 package com.leclowndu93150.carbort.networking;
 
-import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.CarbortConfig;
 import com.leclowndu93150.carbort.common.items.ChunkAnalyzerItem;
-import com.leclowndu93150.carbort.common.screen.ChunkAnalyzerMenu;
-import com.leclowndu93150.carbort.common.screen.ChunkAnalyzerScreen;
-import com.leclowndu93150.carbort.registry.DataComponentRegistry;
+import com.leclowndu93150.carbort.common.screen.ChunkAnalyzer.ChunkAnalyzerMenu;
+import com.leclowndu93150.carbort.common.screen.ChunkAnalyzer.ChunkAnalyzerScreen;
 import com.leclowndu93150.carbort.utils.CapabilityUtils;
 import com.leclowndu93150.carbort.utils.ChunkAnalyzerHelper;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.network.PacketDistributor;

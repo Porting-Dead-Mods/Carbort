@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.common.screen;
+package com.leclowndu93150.carbort.common.screen.ChunkAnalyzer;
 
 import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;

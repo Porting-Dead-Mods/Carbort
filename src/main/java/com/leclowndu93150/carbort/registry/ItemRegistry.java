@@ -24,6 +24,8 @@ public class ItemRegistry {
     public static final DeferredItem<Item> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
 
     public static final DeferredItem<BlockItem> SMILEY_CLOUD_ITEM = ITEMS.registerSimpleBlockItem("smiley_cloud", BlockRegistry.SMILEY_CLOUD);
+    public static final DeferredItem<BlockItem> ONLINE_DETECTOR_ITEM = ITEMS.registerSimpleBlockItem("online_detector", BlockRegistry.ONLINE_DETECTOR);
+
     public static final DeferredItem<Item> FIRE_IN_A_BOTTLE = ITEMS.register("fire_in_a_bottle", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BEAN = ITEMS.register("bean", () -> new BeanItem(BlockRegistry.BEANS.get(), new Item.Properties()
             .food(new FoodProperties.Builder()

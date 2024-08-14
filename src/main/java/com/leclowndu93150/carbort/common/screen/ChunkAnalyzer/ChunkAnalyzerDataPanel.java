@@ -1,7 +1,6 @@
-package com.leclowndu93150.carbort.common.screen;
+package com.leclowndu93150.carbort.common.screen.ChunkAnalyzer;
 
 import com.mojang.blaze3d.vertex.Tesselator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
