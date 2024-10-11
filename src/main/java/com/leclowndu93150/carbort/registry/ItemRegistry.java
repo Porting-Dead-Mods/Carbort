@@ -46,4 +46,6 @@ public class ItemRegistry {
                     .component(DataComponentRegistry.ENERGY_STORAGE, 0)));
 
     public static final DeferredItem<Item> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
+
+    public static final DeferredItem<Item> EMP = ITEMS.register("emp", () -> new EmpItem(new Item.Properties()));
 }

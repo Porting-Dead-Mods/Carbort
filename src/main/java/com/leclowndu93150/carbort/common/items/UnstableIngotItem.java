@@ -48,7 +48,7 @@ public class UnstableIngotItem extends Item {
         if (stack.has(DataComponentRegistry.TIMER)){
             stack.set(DataComponentRegistry.TIMER, stack.get(DataComponentRegistry.TIMER) - 1);
             if (stack.get(DataComponentRegistry.TIMER) <= 0){
-                stack.setCount(0);
+                stack.shrink(1);
             }
         }
         super.inventoryTick(stack, level, entity, slotId, isSelected);
@@ -66,7 +66,6 @@ public class UnstableIngotItem extends Item {
             tooltipComponents.add(Component.literal("- Do not craft unless ready -").withStyle(ChatFormatting.GRAY));
             tooltipComponents.add(Component.literal(" "));
             tooltipComponents.add(Component.literal("Must be crafted in a vanilla crafting table.").withStyle(ChatFormatting.GRAY));
-
         }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
