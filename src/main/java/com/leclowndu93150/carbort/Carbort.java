@@ -1,6 +1,6 @@
 package com.leclowndu93150.carbort;
 
-import com.leclowndu93150.carbort.registry.*;
+import com.leclowndu93150.carbort.registries.*;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
