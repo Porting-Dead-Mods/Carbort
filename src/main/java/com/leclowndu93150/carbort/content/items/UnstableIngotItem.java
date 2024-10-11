@@ -1,7 +1,7 @@
 package com.leclowndu93150.carbort.content.items;
 
 import com.google.common.collect.Sets;
-import com.leclowndu93150.carbort.registries.DataComponentRegistry;
+import com.leclowndu93150.carbort.registries.CBDataComponents;
 import com.leclowndu93150.carbort.utils.RandomFunctions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -38,16 +38,16 @@ public class UnstableIngotItem extends Item {
 
     @Override
     public void onCraftedBy(ItemStack stack, Level level, Player player) {
-        if(!stack.has(DataComponentRegistry.TIMER)){
-            stack.set(DataComponentRegistry.TIMER, 200);
+        if(!stack.has(CBDataComponents.TIMER)){
+            stack.set(CBDataComponents.TIMER, 200);
         }
     }
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-        if (stack.has(DataComponentRegistry.TIMER)){
-            stack.set(DataComponentRegistry.TIMER, stack.get(DataComponentRegistry.TIMER) - 1);
-            if (stack.get(DataComponentRegistry.TIMER) <= 0){
+        if (stack.has(CBDataComponents.TIMER)){
+            stack.set(CBDataComponents.TIMER, stack.get(CBDataComponents.TIMER) - 1);
+            if (stack.get(CBDataComponents.TIMER) <= 0){
                 stack.shrink(1);
             }
         }
@@ -56,9 +56,9 @@ public class UnstableIngotItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (stack.has(DataComponentRegistry.TIMER)){
-            tooltipComponents.add(Component.literal("Explosion in "+RandomFunctions.convertTicksToSeconds(stack.get(DataComponentRegistry.TIMER))+" seconds").withStyle(ChatFormatting.GRAY));
-        } else if (!stack.has(DataComponentRegistry.TIMER)){
+        if (stack.has(CBDataComponents.TIMER)){
+            tooltipComponents.add(Component.literal("Explosion in "+RandomFunctions.convertTicksToSeconds(stack.get(CBDataComponents.TIMER))+" seconds").withStyle(ChatFormatting.GRAY));
+        } else if (!stack.has(CBDataComponents.TIMER)){
             tooltipComponents.add(Component.literal("ERROR: Divide by diamond").withStyle(ChatFormatting.GRAY));
             tooltipComponents.add(Component.literal("This ingot is highly unstable and will explode after 10 seconds.").withStyle(ChatFormatting.GRAY));
             tooltipComponents.add(Component.literal("Will explode if the crafting window is closed or the ingot is thrown on the ground.").withStyle(ChatFormatting.GRAY));

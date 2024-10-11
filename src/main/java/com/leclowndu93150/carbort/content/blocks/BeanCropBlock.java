@@ -1,6 +1,6 @@
 package com.leclowndu93150.carbort.content.blocks;
 
-import com.leclowndu93150.carbort.registries.ItemRegistry;
+import com.leclowndu93150.carbort.registries.CBItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -31,7 +31,7 @@ public class BeanCropBlock extends CropBlock {
 
     @Override
     protected @NotNull ItemLike getBaseSeedId() {
-        return ItemRegistry.BEAN;
+        return CBItems.BEAN;
     }
 
     @Override

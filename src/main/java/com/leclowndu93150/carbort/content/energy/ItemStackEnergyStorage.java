@@ -1,6 +1,6 @@
 package com.leclowndu93150.carbort.content.energy;
 
-import com.leclowndu93150.carbort.registries.DataComponentRegistry;
+import com.leclowndu93150.carbort.registries.CBDataComponents;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;
@@ -14,12 +14,12 @@ public class ItemStackEnergyStorage extends EnergyStorage {
     public ItemStackEnergyStorage(int capacity, ItemStack itemStack) {
         super(capacity, capacity, capacity, 0);
         this.itemStack = itemStack;
-        this.energy = itemStack.getOrDefault(DataComponentRegistry.ENERGY_STORAGE, 0);
+        this.energy = itemStack.getOrDefault(CBDataComponents.ENERGY_STORAGE, 0);
     }
 
     public void setEnergy(int energy) {
         this.energy = energy;
-        itemStack.set(DataComponentRegistry.ENERGY_STORAGE, energy);
+        itemStack.set(CBDataComponents.ENERGY_STORAGE, energy);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ItemStackEnergyStorage extends EnergyStorage {
         int energyReceived = Math.min(capacity - energy, Math.min(this.maxReceive, maxReceive));
         if (!simulate) {
             energy += energyReceived;
-            itemStack.set(DataComponentRegistry.ENERGY_STORAGE, energy);
+            itemStack.set(CBDataComponents.ENERGY_STORAGE, energy);
         }
         return energyReceived;
     }
@@ -43,14 +43,14 @@ public class ItemStackEnergyStorage extends EnergyStorage {
         int energyExtracted = Math.min(energy, Math.min(this.maxExtract, maxExtract));
         if (!simulate) {
             energy -= energyExtracted;
-            itemStack.set(DataComponentRegistry.ENERGY_STORAGE, energy);
+            itemStack.set(CBDataComponents.ENERGY_STORAGE, energy);
         }
         return energyExtracted;
     }
 
     @Override
     public int getEnergyStored() {
-        return itemStack.getOrDefault(DataComponentRegistry.ENERGY_STORAGE, 0);
+        return itemStack.getOrDefault(CBDataComponents.ENERGY_STORAGE, 0);
     }
 
     @Override

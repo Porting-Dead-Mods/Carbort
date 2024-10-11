@@ -8,7 +8,7 @@ import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerScreen;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerDataPayload;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;
 import com.leclowndu93150.carbort.networking.PayloadActions;
-import com.leclowndu93150.carbort.registries.MenuRegistry;
+import com.leclowndu93150.carbort.registries.CBMenus;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -65,7 +65,7 @@ public class CarbortEvents {
 
         @SubscribeEvent
         public static void onClientSetup(RegisterMenuScreensEvent event) {
-            event.register(MenuRegistry.CHUNK_ANALYZER_MENU.get(), ChunkAnalyzerScreen::new);
+            event.register(CBMenus.CHUNK_ANALYZER_MENU.get(), ChunkAnalyzerScreen::new);
         }
 
 

@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class BlockRegistry {
+public final class CBBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Carbort.MODID);
 
     public static final DeferredBlock<Block> SMILEY_CLOUD = BLOCKS.register(

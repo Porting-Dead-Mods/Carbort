@@ -1,7 +1,7 @@
 package com.leclowndu93150.carbort.content.screen;
 
 import com.leclowndu93150.carbort.content.items.ChunkAnalyzerItem;
-import com.leclowndu93150.carbort.registries.MenuRegistry;
+import com.leclowndu93150.carbort.registries.CBMenus;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ChunkAnalyzerMenu extends AbstractContainerMenu {
     public ChunkAnalyzerMenu(Player player, int containerId) {
-        super(MenuRegistry.CHUNK_ANALYZER_MENU.get(), containerId);
+        super(CBMenus.CHUNK_ANALYZER_MENU.get(), containerId);
     }
 
     public ChunkAnalyzerMenu(int id, Inventory inventory, RegistryFriendlyByteBuf data) {

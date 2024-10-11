@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class MenuRegistry {
+public final class CBMenus {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(Registries.MENU, Carbort.MODID);
     public static final Supplier<MenuType<ChunkAnalyzerMenu>> CHUNK_ANALYZER_MENU =

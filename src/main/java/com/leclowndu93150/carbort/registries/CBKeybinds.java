@@ -1,4 +1,4 @@
 package com.leclowndu93150.carbort.registries;
 
-public class KeyBindRegistry {
+public final class CBKeybinds {
 }

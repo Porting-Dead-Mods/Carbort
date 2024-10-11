@@ -11,7 +11,7 @@ import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class ItemRegistry {
+public final class CBItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Carbort.MODID);
 
@@ -21,9 +21,9 @@ public class ItemRegistry {
 
     public static final DeferredItem<Item> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
 
-    public static final DeferredItem<BlockItem> SMILEY_CLOUD_ITEM = ITEMS.registerSimpleBlockItem("smiley_cloud", BlockRegistry.SMILEY_CLOUD);
+    public static final DeferredItem<BlockItem> SMILEY_CLOUD_ITEM = ITEMS.registerSimpleBlockItem("smiley_cloud", CBBlocks.SMILEY_CLOUD);
     public static final DeferredItem<Item> FIRE_IN_A_BOTTLE = ITEMS.register("fire_in_a_bottle", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> BEAN = ITEMS.register("bean", () -> new BeanItem(BlockRegistry.BEANS.get(), new Item.Properties()
+    public static final DeferredItem<Item> BEAN = ITEMS.register("bean", () -> new BeanItem(CBBlocks.BEANS.get(), new Item.Properties()
             .food(new FoodProperties.Builder()
                     .alwaysEdible()
                     .nutrition(6)
@@ -41,7 +41,7 @@ public class ItemRegistry {
             () -> new ChunkAnalyzerItem(new Item.Properties()
                     .stacksTo(1)
                     .rarity(Rarity.RARE)
-                    .component(DataComponentRegistry.ENERGY_STORAGE, 0)));
+                    .component(CBDataComponents.ENERGY_STORAGE, 0)));
 
     public static final DeferredItem<Item> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
 

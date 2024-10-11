@@ -16,15 +16,15 @@ public class Carbort {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Carbort(IEventBus modEventBus, ModContainer modContainer) {
-        new FoodRegistry();
-        CreativeTabRegistry.CREATIVE_MODE_TABS.register(modEventBus);
-        ItemRegistry.ITEMS.register(modEventBus);
-        BlockRegistry.BLOCKS.register(modEventBus);
-        BlockEntityRegistry.REGISTER.register(modEventBus);
-        EffectRegistry.EFFECTS.register(modEventBus);
-        EffectRegistry.POTIONS.register(modEventBus);
-        DataComponentRegistry.DATA_COMPONENTS.register(modEventBus);
-        MenuRegistry.MENUS.register(modEventBus);
+        new CBFoods();
+        CBTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        CBItems.ITEMS.register(modEventBus);
+        CBBlocks.BLOCKS.register(modEventBus);
+        CBBlockEntities.REGISTER.register(modEventBus);
+        CBMobEffects.EFFECTS.register(modEventBus);
+        CBMobEffects.POTIONS.register(modEventBus);
+        CBDataComponents.DATA_COMPONENTS.register(modEventBus);
+        CBMenus.MENUS.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         modContainer.registerConfig(ModConfig.Type.COMMON, CarbortConfig.SPEC);
     }

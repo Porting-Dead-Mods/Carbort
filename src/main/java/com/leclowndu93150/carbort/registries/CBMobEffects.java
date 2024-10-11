@@ -11,7 +11,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class EffectRegistry {
+public final class CBMobEffects {
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, Carbort.MODID);
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(Registries.POTION, Carbort.MODID);
     public static final DeferredHolder<MobEffect, MobEffect> SOUL_TORMENT = EFFECTS.register("soul_torment", ()->

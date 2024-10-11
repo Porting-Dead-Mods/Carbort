@@ -13,9 +13,9 @@ import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import static com.leclowndu93150.carbort.registries.ItemRegistry.*;
+import static com.leclowndu93150.carbort.registries.CBItems.*;
 
-public class CreativeTabRegistry {
+public final class CBTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Carbort.MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CARBORT_TAB = CREATIVE_MODE_TABS.register("carbort_tab", () -> CreativeModeTab.builder()

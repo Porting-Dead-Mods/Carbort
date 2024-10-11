@@ -1,9 +1,9 @@
 package com.leclowndu93150.carbort.registries;
 
-import com.leclowndu93150.carbort.registries.holder.CakeFlavour;
+import com.leclowndu93150.carbort.api.CakeFlavour;
 
-public class FoodRegistry {
-    public FoodRegistry(){
+public final class CBFoods {
+    public CBFoods(){
 
     }
     public CakeFlavour CAKE_FLAVOUR_CHOCOLATE = new CakeFlavour("chocolate");
