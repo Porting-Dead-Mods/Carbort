@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.leclowndu93150.carbort.registries.CBDataComponents;
 import com.leclowndu93150.carbort.utils.RandomFunctions;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -45,10 +46,18 @@ public class UnstableIngotItem extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        if(entity instanceof Player player){
+            if(!(player.containerMenu instanceof CraftingMenu)){
+                stack.set(CBDataComponents.TIMER, 0);
+            }
+        }
         if (stack.has(CBDataComponents.TIMER)){
             stack.set(CBDataComponents.TIMER, stack.get(CBDataComponents.TIMER) - 1);
             if (stack.get(CBDataComponents.TIMER) <= 0){
-                stack.shrink(1);
+                if(entity instanceof Player player && !player.isCreative() && !level.isClientSide()){
+                    stack.shrink(1);
+                    level.explode(entity, entity.getX(), entity.getY(), entity.getZ(),3, Level.ExplosionInteraction.TNT);
+                }
             }
         }
         super.inventoryTick(stack, level, entity, slotId, isSelected);

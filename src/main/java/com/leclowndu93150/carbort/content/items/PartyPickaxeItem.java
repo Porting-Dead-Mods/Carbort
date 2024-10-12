@@ -1,6 +1,7 @@
 package com.leclowndu93150.carbort.content.items;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -18,7 +19,6 @@ import java.util.List;
 
 public class PartyPickaxeItem extends PickaxeItem {
     public PartyPickaxeItem(Properties p_42964_) {
-
         super(ToolTiers.PARTY, p_42964_);
     }
 
@@ -47,6 +47,7 @@ public class PartyPickaxeItem extends PickaxeItem {
         }
         return super.useOn(context);
     }
+
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
