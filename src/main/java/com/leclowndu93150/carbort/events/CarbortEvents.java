@@ -1,9 +1,9 @@
 package com.leclowndu93150.carbort.events;
 
 import com.leclowndu93150.carbort.Carbort;
-import com.leclowndu93150.carbort.content.energy.ItemStackEnergyStorage;
+import com.leclowndu93150.carbort.capabilties.ItemStackEnergyStorage;
 import com.leclowndu93150.carbort.content.items.HealingAxeItem;
-import com.leclowndu93150.carbort.content.energy.IEnergyItem;
+import com.leclowndu93150.carbort.api.items.IEnergyItem;
 import com.leclowndu93150.carbort.content.items.UnstableIngotItem;
 import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerScreen;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerDataPayload;

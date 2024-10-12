@@ -1,6 +1,6 @@
 package com.leclowndu93150.carbort.registries;
 
-import com.leclowndu93150.carbort.api.CakeFlavour;
+import com.leclowndu93150.carbort.api.foods.CakeFlavour;
 
 public final class CBFoods {
     public CBFoods(){

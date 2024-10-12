@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.content.energy;
+package com.leclowndu93150.carbort.api.items;
 
 public interface IEnergyItem {
     int getCapacity();

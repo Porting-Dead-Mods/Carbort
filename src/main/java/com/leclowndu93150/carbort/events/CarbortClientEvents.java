@@ -1,7 +1,6 @@
 package com.leclowndu93150.carbort.events;
 
 import com.leclowndu93150.carbort.content.items.UnstableIngotItem;
-import com.leclowndu93150.carbort.registries.DataComponentRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;

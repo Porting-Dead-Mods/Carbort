@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.api;
+package com.leclowndu93150.carbort.api.foods;
 
 import com.leclowndu93150.carbort.content.blocks.CakeBlock;
 import com.leclowndu93150.carbort.registries.CBBlocks;

@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.content.energy;
+package com.leclowndu93150.carbort.capabilties;
 
 import com.leclowndu93150.carbort.registries.CBDataComponents;
 import net.minecraft.core.HolderLookup;

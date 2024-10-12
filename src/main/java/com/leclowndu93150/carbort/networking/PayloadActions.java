@@ -40,7 +40,7 @@ public final class PayloadActions {
                                 .stream()
                                 .map(BuiltInRegistries.BLOCK::getId)
                                 .toList();
-                        ChunkAnalyzerDataPayload payload1 = new ChunkAnalyzerDataPayload(blocks1, blocks.values().stream().toList());
+                        ChunkAnalyzerDataPayload payload1 = new ChunkAnalyzerDataPayload(blocks1, blocks.values().intStream().boxed().toList());
                         PacketDistributor.sendToPlayer(serverPlayer, payload1);
                     } else  {
                         PacketDistributor.sendToPlayer(serverPlayer, new ChunkAnalyzerTogglePayload((byte) 2));
