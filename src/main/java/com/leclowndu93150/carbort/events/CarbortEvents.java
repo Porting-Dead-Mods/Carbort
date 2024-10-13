@@ -11,8 +11,10 @@ import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;
 import com.leclowndu93150.carbort.networking.PayloadActions;
 import com.leclowndu93150.carbort.registries.CBDataComponents;
 import com.leclowndu93150.carbort.registries.CBMenus;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingMenu;
@@ -27,11 +29,18 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 @EventBusSubscriber(modid = Carbort.MODID)
 public class CarbortEvents {
+
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void healingAxeHitEntity(AttackEntityEvent event) {
         if (event.getEntity().getMainHandItem().getItem() instanceof HealingAxeItem) {
@@ -59,8 +68,8 @@ public class CarbortEvents {
                 item.set(CBDataComponents.TIMER, 0);
             }
             if(item.has(CBDataComponents.TIMER)){
-                item.set(CBDataComponents.TIMER, item.get(CBDataComponents.TIMER) - 1);
-                if(item.get(CBDataComponents.TIMER) <= 0){
+                item.set(CBDataComponents.TIMER, item.getOrDefault(CBDataComponents.TIMER, 0) - 1);
+                if(item.getOrDefault(CBDataComponents.TIMER, 0) <= 0){
                     if(!player.isCreative()){
                         item.shrink(1);
                         player.level().explode(player, player.getX(), player.getY(), player.getZ(),3, Level.ExplosionInteraction.TNT);
