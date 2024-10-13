@@ -25,7 +25,7 @@ public class CBItemModelProvider extends ItemModelProvider {
         basicItem(CBItems.TORMENTED_SOUL);
         basicItem(CBItems.GOLDEN_BEAN);
         basicItem(CBItems.FIRE_IN_A_BOTTLE);
-//        basicItem(CBItems.UNSTABLE_INGOT);
+        basicItem(CBItems.DIVISION_SIGIL);
 
         handHeldItem(CBItems.BEAN_WAND);
         handHeldItem(CBItems.PARTY_PICKAXE);
