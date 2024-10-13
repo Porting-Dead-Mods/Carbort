@@ -5,13 +5,14 @@ import com.leclowndu93150.carbort.registries.CBDataComponents;
 import com.leclowndu93150.carbort.utils.RandomFunctions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingMenu;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.DyedItemColor;
+import net.minecraft.world.item.crafting.ArmorDyeRecipe;
 import net.minecraft.world.level.Level;
 
 import java.util.HashSet;
@@ -21,8 +22,6 @@ public class UnstableIngotItem extends Item {
     public UnstableIngotItem(Properties properties) {
         super(properties);
     }
-
-    public static HashSet<Class<?>> ALLOWED_CLASSES = Sets.newHashSet(CraftingMenu.class);
 
     @Override
     public int getMaxStackSize(ItemStack stack) {
