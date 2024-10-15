@@ -11,7 +11,12 @@ import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
+
 public final class CBItems {
+    public static final List<Supplier<BlockItem>> BLOCK_ITEMS = new ArrayList<>();
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Carbort.MODID);
 

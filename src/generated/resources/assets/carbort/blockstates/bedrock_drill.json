@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "carbort:block/bedrock_drill",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "carbort:block/bedrock_drill"
+    },
+    "facing=south": {
+      "model": "carbort:block/bedrock_drill",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "carbort:block/bedrock_drill",
+      "y": 270
+    }
+  }
+}
