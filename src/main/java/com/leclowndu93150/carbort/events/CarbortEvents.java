@@ -10,37 +10,28 @@ import com.leclowndu93150.carbort.networking.ChunkAnalyzerDataPayload;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;
 import com.leclowndu93150.carbort.networking.PayloadActions;
 import com.leclowndu93150.carbort.registries.CBDataComponents;
-import com.leclowndu93150.carbort.registries.CBItems;
 import com.leclowndu93150.carbort.registries.CBMenus;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
-import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import static com.leclowndu93150.carbort.content.items.UnstableIngotItem.DAMAGE_CALCULATOR;
 
 @EventBusSubscriber(modid = Carbort.MODID)
 public class CarbortEvents {
@@ -74,9 +65,19 @@ public class CarbortEvents {
             if(item.has(CBDataComponents.TIMER)){
                 item.set(CBDataComponents.TIMER, item.getOrDefault(CBDataComponents.TIMER, 0) - 1);
                 if(item.getOrDefault(CBDataComponents.TIMER, 0) <= 0){
-                    if(!player.isCreative()){
+                    if (!player.isCreative()) {
                         item.shrink(1);
-                        player.level().explode(player, player.getX(), player.getY(), player.getZ(),3, Level.ExplosionInteraction.TNT);
+                        player.level().explode(
+                                null,
+                                Explosion.getDefaultDamageSource(player.level(), player),
+                                DAMAGE_CALCULATOR,
+                                player.getX(),
+                                player.getY(),
+                                player.getZ(),
+                                3f,
+                                true,
+                                Level.ExplosionInteraction.TNT
+                        );
                     }
                 }
             }

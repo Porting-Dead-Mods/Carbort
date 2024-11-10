@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "carbort:division_sigil"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "I",
+    "#",
+    "D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:unstable_ingot"
+  }
+}

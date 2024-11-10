@@ -1,27 +1,34 @@
 package com.leclowndu93150.carbort.content.items;
 
-import com.google.common.collect.Sets;
 import com.leclowndu93150.carbort.registries.CBDataComponents;
 import com.leclowndu93150.carbort.utils.RandomFunctions;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.DyedItemColor;
-import net.minecraft.world.item.crafting.ArmorDyeRecipe;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class UnstableIngotItem extends Item {
     public UnstableIngotItem(Properties properties) {
         super(properties);
     }
+
+    public static final ExplosionDamageCalculator DAMAGE_CALCULATOR = new ExplosionDamageCalculator() {
+        @Override
+        public float getEntityDamageAmount(Explosion explosion, Entity entity) {
+            if (entity instanceof Player player) {
+                float currentHealth = player.getHealth();
+                return 1000f;
+            }
+            return super.getEntityDamageAmount(explosion, entity);
+        }
+    };
 
     @Override
     public int getMaxStackSize(ItemStack stack) {
@@ -55,7 +62,17 @@ public class UnstableIngotItem extends Item {
             if (stack.get(CBDataComponents.TIMER) <= 0){
                 if(entity instanceof Player player && !player.isCreative() && !level.isClientSide()){
                     stack.shrink(1);
-                    level.explode(entity, entity.getX(), entity.getY(), entity.getZ(),3, Level.ExplosionInteraction.TNT);
+                    player.level().explode(
+                            null,
+                            Explosion.getDefaultDamageSource(player.level(), player),
+                            DAMAGE_CALCULATOR,
+                            player.getX(),
+                            player.getY(),
+                            player.getZ(),
+                            3f,
+                            true,
+                            Level.ExplosionInteraction.TNT
+                    );
                 }
             }
         }

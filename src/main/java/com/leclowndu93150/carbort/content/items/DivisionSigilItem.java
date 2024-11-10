@@ -22,9 +22,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class DivisionSigilItem extends Item {
@@ -33,11 +35,11 @@ public class DivisionSigilItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult useOn(UseOnContext context) {
         Player player = context.getPlayer();
         ItemStack stack = context.getItemInHand();
 
-        if (stack.get(CBDataComponents.ACTIVE) || !player.isShiftKeyDown() || player.getMainHandItem() != stack) {
+        if (Boolean.TRUE.equals(stack.get(CBDataComponents.ACTIVE)) || !Objects.requireNonNull(player).isShiftKeyDown() || player.getMainHandItem() != stack) {
             return InteractionResult.FAIL;
         }
 
@@ -88,13 +90,29 @@ public class DivisionSigilItem extends Item {
     }
 
     @Override
-    public boolean isFoil(ItemStack stack) {
-        return stack.get(CBDataComponents.ACTIVE);
+    public @NotNull ItemStack getCraftingRemainingItem(ItemStack itemStack) {
+        ItemStack sigil = itemStack.copy();
+        int newSigil = sigil.getDamageValue() + 1;
+        if (newSigil >= sigil.getMaxDamage()) {
+            return ItemStack.EMPTY;
+        }
+        sigil.setDamageValue(newSigil);
+        return sigil;
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.literal("Status: " + (stack.get(CBDataComponents.ACTIVE) ? "Active" : "Inactive")).withStyle(ChatFormatting.GRAY));
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public boolean isFoil(ItemStack stack) {
+        return Boolean.TRUE.equals(stack.get(CBDataComponents.ACTIVE));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.literal("Status: " + (Boolean.TRUE.equals(stack.get(CBDataComponents.ACTIVE)) ? "Active" : "Inactive")).withStyle(ChatFormatting.GRAY));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }
