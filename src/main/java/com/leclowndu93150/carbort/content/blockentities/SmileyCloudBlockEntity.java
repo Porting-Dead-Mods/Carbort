@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.content.blockEntities;
+package com.leclowndu93150.carbort.content.blockentities;
 
 import com.leclowndu93150.carbort.registries.CBBlockEntities;
 import net.minecraft.core.BlockPos;

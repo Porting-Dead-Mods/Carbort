@@ -1,19 +1,24 @@
 package com.leclowndu93150.carbort.content.blocks;
 
+import com.leclowndu93150.carbort.api.blockentities.ContainerBlockEntity;
+import com.leclowndu93150.carbort.api.blocks.RotatableContainerBlock;
+import com.leclowndu93150.carbort.registries.CBBlockEntities;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-public class BedrockDrillBlock extends HorizontalDirectionalBlock {
+public class BedrockDrillBlock extends RotatableContainerBlock {
     public static final VoxelShape SHAPE = Stream.of(
             Block.box(0, 0, 0, 4, 10, 4),
             Block.box(0, 0, 12, 4, 10, 16),
@@ -34,17 +39,22 @@ public class BedrockDrillBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
+    public boolean tickingEnabled() {
+        return false;
+    }
+
+    @Override
+    public BlockEntityType<? extends ContainerBlockEntity> getBlockEntityType() {
+        return CBBlockEntities.BEDROCK_DRILL.get();
+    }
+
+    @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder.add(FACING));
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+    protected MapCodec<? extends BaseEntityBlock> codec() {
         return simpleCodec(BedrockDrillBlock::new);
     }
 }

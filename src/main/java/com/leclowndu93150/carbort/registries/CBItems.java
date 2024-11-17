@@ -5,9 +5,7 @@ import com.leclowndu93150.carbort.content.items.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -52,9 +50,12 @@ public final class CBItems {
                     .build())));
     public static final DeferredItem<Item> TORMENTED_SOUL = ITEMS.register("tormented_soul", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<Item> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
+    public static final DeferredItem<UnstableIngotItem> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
 
-    public static final DeferredItem<Item> EMP = ITEMS.register("emp", () -> new EmpItem(new Item.Properties()));
+    public static final DeferredItem<EmpItem> EMP = ITEMS.register("emp", () -> new EmpItem(new Item.Properties()));
 
-    public static final DeferredItem<Item> DIVISION_SIGIL = ITEMS.register("division_sigil", () -> new DivisionSigilItem(new Item.Properties()));
+    public static final DeferredItem<DivisionSigilItem> DIVISION_SIGIL = ITEMS.register("division_sigil", () -> new DivisionSigilItem(new Item.Properties()));
+
+    public static final DeferredItem<SwordItem> IRON_GREAT_SWORD = ITEMS.register("iron_great_sword", () -> new SwordItem(Tiers.DIAMOND, new Item.Properties()
+            .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -3.2F))));
 }

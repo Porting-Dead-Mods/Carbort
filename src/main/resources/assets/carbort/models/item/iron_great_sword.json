@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "textures": {
+    "layer0": "carbort:item/iron_great_sword_gui"
+  },
+  "base": {
+    "parent": "carbort:item/iron_great_sword_handheld"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "carbort:item/iron_great_sword_gui"
+    },
+    "fixed": {
+      "parent": "carbort:item/iron_great_sword_gui"
+    },
+    "ground": {
+      "parent": "carbort:item/iron_great_sword_gui"
+    }
+  }
+}

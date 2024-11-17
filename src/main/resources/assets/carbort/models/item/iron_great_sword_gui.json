@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "carbort:item/iron_great_sword_gui"
+  }
+}
