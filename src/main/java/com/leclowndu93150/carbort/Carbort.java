@@ -3,14 +3,17 @@ package com.leclowndu93150.carbort;
 import com.leclowndu93150.carbort.api.items.IEnergyItem;
 import com.leclowndu93150.carbort.capabilties.ItemStackEnergyStorage;
 import com.leclowndu93150.carbort.content.items.UnstableIngotItem;
+import com.leclowndu93150.carbort.data.CBAttachmentTypes;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerDataPayload;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;
 import com.leclowndu93150.carbort.networking.PayloadActions;
+import com.leclowndu93150.carbort.networking.ShrinkSyncPayload;
 import com.leclowndu93150.carbort.registries.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -47,6 +50,7 @@ public final class Carbort {
         CBMobEffects.POTIONS.register(modEventBus);
         CBDataComponents.DATA_COMPONENTS.register(modEventBus);
         CBMenus.MENUS.register(modEventBus);
+        CBAttachmentTypes.ATTACHMENT_TYPES.register(modEventBus);
 
         modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(this::registerPayloads);
@@ -67,5 +71,10 @@ public final class Carbort {
         PayloadRegistrar registrar = event.registrar(Carbort.MODID);
         registrar.playBidirectional(ChunkAnalyzerTogglePayload.TYPE, ChunkAnalyzerTogglePayload.STREAM_CODEC, PayloadActions::chunkAnalyzerAction);
         registrar.playToClient(ChunkAnalyzerDataPayload.TYPE, ChunkAnalyzerDataPayload.STREAM_CODEC, PayloadActions::chunkAnalyzerData);
+        registrar.playToClient(ShrinkSyncPayload.TYPE, ShrinkSyncPayload.STREAM_CODEC, ShrinkSyncPayload::handle);
+    }
+
+    public static ResourceLocation rl(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }
