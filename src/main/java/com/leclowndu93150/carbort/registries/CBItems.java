@@ -51,6 +51,8 @@ public final class CBItems {
     public static final DeferredItem<Item> TORMENTED_SOUL = ITEMS.register("tormented_soul", () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<UnstableIngotItem> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
+    public static final DeferredItem<Item> BEDROCKIUM_INGOT = ITEMS.register("bedrockium_ingot", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DEEPSTEAL_INGOT = ITEMS.register("deepsteal_ingot", () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<EmpItem> EMP = ITEMS.register("emp", () -> new EmpItem(new Item.Properties()));
 

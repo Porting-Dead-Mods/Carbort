@@ -6,7 +6,7 @@ import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 @EventBusSubscriber(modid = Carbort.MODID, bus = EventBusSubscriber.Bus.MOD)
-public class CarbortConfig {
+public final class CarbortConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     private static final ModConfigSpec.IntValue CHUNK_ANALYZER_ENERGY_USAGE = BUILDER

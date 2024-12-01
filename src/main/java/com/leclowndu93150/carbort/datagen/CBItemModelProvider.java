@@ -29,6 +29,8 @@ public class CBItemModelProvider extends ItemModelProvider {
         basicItem(CBItems.GOLDEN_BEAN);
         basicItem(CBItems.FIRE_IN_A_BOTTLE);
         basicItem(CBItems.DIVISION_SIGIL);
+        basicItem(CBItems.BEDROCKIUM_INGOT);
+        basicItem(CBItems.DEEPSTEAL_INGOT);
 
         handHeldItem(CBItems.BEAN_WAND);
         handHeldItem(CBItems.PARTY_PICKAXE);

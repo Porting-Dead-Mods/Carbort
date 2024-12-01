@@ -40,7 +40,7 @@ public class BedrockDrillBlock extends RotatableContainerBlock {
 
     @Override
     public boolean tickingEnabled() {
-        return false;
+        return true;
     }
 
     @Override

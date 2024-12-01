@@ -83,29 +83,4 @@ public class CarbortEvents {
             }
         }
     }
-
-    @EventBusSubscriber(modid = Carbort.MODID, bus = EventBusSubscriber.Bus.MOD)
-    public static class ModEvents {
-        @SubscribeEvent
-        public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-            for (Item item : BuiltInRegistries.ITEM) {
-                if (item instanceof IEnergyItem energyItem) {
-                    event.registerItem(Capabilities.EnergyStorage.ITEM,
-                            (itemStack, ctx) -> new ItemStackEnergyStorage(energyItem.getCapacity(), itemStack), item);
-                }
-            }
-        }
-
-        @SubscribeEvent
-        public static void registerPayloads(RegisterPayloadHandlersEvent event) {
-            PayloadRegistrar registrar = event.registrar(Carbort.MODID);
-            registrar.playBidirectional(ChunkAnalyzerTogglePayload.TYPE, ChunkAnalyzerTogglePayload.STREAM_CODEC, PayloadActions::chunkAnalyzerAction);
-            registrar.playToClient(ChunkAnalyzerDataPayload.TYPE, ChunkAnalyzerDataPayload.STREAM_CODEC, PayloadActions::chunkAnalyzerData);
-        }
-
-        @SubscribeEvent
-        public static void onClientSetup(RegisterMenuScreensEvent event) {
-            event.register(CBMenus.CHUNK_ANALYZER_MENU.get(), ChunkAnalyzerScreen::new);
-        }
-    }
 }

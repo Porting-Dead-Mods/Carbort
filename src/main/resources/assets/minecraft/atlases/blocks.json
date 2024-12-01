@@ -1,0 +1,8 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "carbort:entity/bedrock_drill_head"
+    }
+  ]
+}
