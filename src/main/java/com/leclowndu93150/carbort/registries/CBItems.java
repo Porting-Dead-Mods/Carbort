@@ -20,7 +20,10 @@ public final class CBItems {
 
     public static final DeferredItem<PartyPickaxeItem> PARTY_PICKAXE = ITEMS.register("party_pickaxe", () -> new PartyPickaxeItem(new Item.Properties()));
     public static final DeferredItem<Item> BEAN_WAND = ITEMS.register("bean_wand", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> SHRINKINATOR = ITEMS.register("shrinkinator", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<ShrinkinatorItem> SHRINKINATOR = ITEMS.register("shrinkinator", () -> new ShrinkinatorItem(new Item.Properties()
+            .stacksTo(1)
+            .rarity(Rarity.RARE)
+            .component(CBDataComponents.ENERGY_STORAGE, 0)));
     public static final DeferredItem<HealingAxeItem> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
     public static final DeferredItem<ChunkAnalyzerItem> CHUNK_ANALYZER = ITEMS.register("chunk_analyzer",
             () -> new ChunkAnalyzerItem(new Item.Properties()

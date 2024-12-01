@@ -1,9 +1,9 @@
 package com.leclowndu93150.carbort.content.blockentities;
 
-import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.api.blockentities.ContainerBlockEntity;
 import com.leclowndu93150.carbort.api.capabilities.IOActions;
 import com.leclowndu93150.carbort.registries.CBBlockEntities;
+import com.leclowndu93150.carbort.utils.ClientUtils;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,6 +28,11 @@ public class BedrockDrillBE extends ContainerBlockEntity {
         float actualSpeed = getSpeed();
         chasingVelocity += ((actualSpeed * 10 / 3f) - chasingVelocity) * .25f;
         independentAngle += chasingVelocity;
+
+        if (level.isClientSide()) {
+            ClientUtils.spawnBreakParticles(worldPosition.below(), level.getBlockState(worldPosition.below()));
+            ClientUtils.shakeCamera();
+        }
     }
 
     private float getSpeed() {
