@@ -31,8 +31,10 @@ public class CBItemModelProvider extends ItemModelProvider {
         basicItem(CBItems.DIVISION_SIGIL);
         basicItem(CBItems.BEDROCKIUM_INGOT);
         basicItem(CBItems.DEEPSTEAL_INGOT);
+        basicItem(CBItems.DYNAMITE);
 
         handHeldItem(CBItems.BEAN_WAND);
+        handHeldItem(CBItems.FUNERAL_PICKAXE);
         handHeldItem(CBItems.PARTY_PICKAXE);
         handHeldItem(CBItems.HEALING_AXE);
 

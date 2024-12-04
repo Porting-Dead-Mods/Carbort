@@ -1,36 +1,27 @@
 package com.leclowndu93150.carbort;
 
 import com.leclowndu93150.carbort.api.items.IEnergyItem;
+import com.leclowndu93150.carbort.api.items.IFluidItem;
 import com.leclowndu93150.carbort.capabilties.ItemStackEnergyStorage;
-import com.leclowndu93150.carbort.content.items.UnstableIngotItem;
 import com.leclowndu93150.carbort.data.CBAttachmentTypes;
-import com.leclowndu93150.carbort.networking.ChunkAnalyzerDataPayload;
-import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;
-import com.leclowndu93150.carbort.networking.PayloadActions;
-import com.leclowndu93150.carbort.networking.ShrinkSyncPayload;
+import com.leclowndu93150.carbort.data.CBDataComponents;
+import com.leclowndu93150.carbort.networking.*;
 import com.leclowndu93150.carbort.registries.*;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.client.event.ModelEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStackSimple;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.slf4j.Logger;
 
 @Mod(Carbort.MODID)
@@ -59,10 +50,19 @@ public final class Carbort {
     }
 
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
-        for (Item item : BuiltInRegistries.ITEM) {
-            if (item instanceof IEnergyItem energyItem) {
+        for (DeferredHolder<Item, ? extends Item> item : CBItems.ITEMS.getEntries()) {
+            if (item.get() instanceof IEnergyItem energyItem) {
                 event.registerItem(Capabilities.EnergyStorage.ITEM,
-                        (itemStack, ctx) -> new ItemStackEnergyStorage(energyItem.getCapacity(), itemStack), item);
+                        (itemStack, ctx) -> new ItemStackEnergyStorage(energyItem.getCapacity(), itemStack), item.get());
+            }
+            if (item.get() instanceof IFluidItem fluidItem) {
+                event.registerItem(Capabilities.FluidHandler.ITEM,
+                        (itemStack, ctx) -> new FluidHandlerItemStackSimple(CBDataComponents.FLUID_STORAGE, itemStack, fluidItem.getCapacity()) {
+                            @Override
+                            public boolean isFluidValid(int tank, FluidStack stack) {
+                                return fluidItem.isFluidValid(tank, stack);
+                            }
+                        }, item.get());
             }
         }
     }
@@ -72,6 +72,7 @@ public final class Carbort {
         registrar.playBidirectional(ChunkAnalyzerTogglePayload.TYPE, ChunkAnalyzerTogglePayload.STREAM_CODEC, PayloadActions::chunkAnalyzerAction);
         registrar.playToClient(ChunkAnalyzerDataPayload.TYPE, ChunkAnalyzerDataPayload.STREAM_CODEC, PayloadActions::chunkAnalyzerData);
         registrar.playToClient(ShrinkSyncPayload.TYPE, ShrinkSyncPayload.STREAM_CODEC, ShrinkSyncPayload::handle);
+        registrar.playToServer(ShrinkinatorSizeSyncPayload.TYPE, ShrinkinatorSizeSyncPayload.STREAM_CODEC, ShrinkinatorSizeSyncPayload::handle);
     }
 
     public static ResourceLocation rl(String path) {

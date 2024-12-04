@@ -39,12 +39,12 @@ public class ChunkVacuumItem extends SimpleEnergyItem {
 
     @Override
     public int getEnergyUsage() {
-        return CarbortConfig.chunkVacuumEnergyUsage;
+        return CarbortConfig.itemEnergyUsage(this);
     }
 
     @Override
     public int getCapacity() {
-        return CarbortConfig.chunkVacuumMaxEnergy;
+        return CarbortConfig.itemEnergyCapacity(this);
     }
 
     @Override

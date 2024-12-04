@@ -2,6 +2,7 @@ package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.content.items.*;
+import com.leclowndu93150.carbort.data.CBDataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -18,11 +19,15 @@ public final class CBItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Carbort.MODID);
 
+    public static final DeferredItem<SwordItem> IRON_GREAT_SWORD = ITEMS.register("iron_great_sword", () -> new SwordItem(Tiers.DIAMOND, new Item.Properties()
+            .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -3.2F))));
     public static final DeferredItem<PartyPickaxeItem> PARTY_PICKAXE = ITEMS.register("party_pickaxe", () -> new PartyPickaxeItem(new Item.Properties()));
+    public static final DeferredItem<FuneralPickaxeItem> FUNERAL_PICKAXE = ITEMS.register("funeral_pickaxe", () -> new FuneralPickaxeItem(new Item.Properties()));
     public static final DeferredItem<Item> BEAN_WAND = ITEMS.register("bean_wand", () -> new Item(new Item.Properties()));
     public static final DeferredItem<ShrinkinatorItem> SHRINKINATOR = ITEMS.register("shrinkinator", () -> new ShrinkinatorItem(new Item.Properties()
             .stacksTo(1)
             .rarity(Rarity.RARE)
+            .component(CBDataComponents.SIZE, 1f)
             .component(CBDataComponents.ENERGY_STORAGE, 0)));
     public static final DeferredItem<HealingAxeItem> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
     public static final DeferredItem<ChunkAnalyzerItem> CHUNK_ANALYZER = ITEMS.register("chunk_analyzer",
@@ -56,11 +61,10 @@ public final class CBItems {
     public static final DeferredItem<UnstableIngotItem> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
     public static final DeferredItem<Item> BEDROCKIUM_INGOT = ITEMS.register("bedrockium_ingot", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DEEPSTEAL_INGOT = ITEMS.register("deepsteal_ingot", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DYNAMITE = ITEMS.register("dynamite", () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<EmpItem> EMP = ITEMS.register("emp", () -> new EmpItem(new Item.Properties()));
 
     public static final DeferredItem<DivisionSigilItem> DIVISION_SIGIL = ITEMS.register("division_sigil", () -> new DivisionSigilItem(new Item.Properties()));
 
-    public static final DeferredItem<SwordItem> IRON_GREAT_SWORD = ITEMS.register("iron_great_sword", () -> new SwordItem(Tiers.DIAMOND, new Item.Properties()
-            .attributes(SwordItem.createAttributes(Tiers.DIAMOND, 3, -3.2F))));
 }

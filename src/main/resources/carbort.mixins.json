@@ -8,5 +8,8 @@
   "client": [
     "CameraMixin",
     "ItemInHandRendererMixin"
+  ],
+  "mixins": [
+    "InventoryMixin"
   ]
 }

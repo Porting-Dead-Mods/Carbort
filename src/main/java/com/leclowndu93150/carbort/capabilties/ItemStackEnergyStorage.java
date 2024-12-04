@@ -1,6 +1,6 @@
 package com.leclowndu93150.carbort.capabilties;
 
-import com.leclowndu93150.carbort.registries.CBDataComponents;
+import com.leclowndu93150.carbort.data.CBDataComponents;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.Tag;

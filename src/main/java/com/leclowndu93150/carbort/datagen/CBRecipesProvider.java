@@ -1,6 +1,6 @@
 package com.leclowndu93150.carbort.datagen;
 
-import com.leclowndu93150.carbort.registries.CBDataComponents;
+import com.leclowndu93150.carbort.data.CBDataComponents;
 import com.leclowndu93150.carbort.registries.CBItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

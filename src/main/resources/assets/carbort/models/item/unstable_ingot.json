@@ -1,8 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "carbort:item/unstable_ingot_outline",
-    "layer1": "carbort:item/unstable_ingot_interior"
+    "layer0": "carbort:item/unstable_ingot_outline"
   },
   "tintindex": 1
 }

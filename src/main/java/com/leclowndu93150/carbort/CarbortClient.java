@@ -4,7 +4,7 @@ import com.leclowndu93150.carbort.client.models.BedrockDrillHeadModel;
 import com.leclowndu93150.carbort.client.renderer.blockentities.BedrockDrillBER;
 import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerScreen;
 import com.leclowndu93150.carbort.registries.CBBlockEntities;
-import com.leclowndu93150.carbort.registries.CBDataComponents;
+import com.leclowndu93150.carbort.data.CBDataComponents;
 import com.leclowndu93150.carbort.registries.CBItems;
 import com.leclowndu93150.carbort.registries.CBMenus;
 import net.minecraft.client.model.HumanoidModel;

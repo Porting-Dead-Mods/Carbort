@@ -1,6 +1,6 @@
 package com.leclowndu93150.carbort.content.items;
 
-import com.leclowndu93150.carbort.registries.CBDataComponents;
+import com.leclowndu93150.carbort.data.CBDataComponents;
 import com.leclowndu93150.carbort.utils.RandomFunctions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

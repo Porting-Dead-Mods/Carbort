@@ -3,7 +3,10 @@ package com.leclowndu93150.carbort.events;
 import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.content.items.HealingAxeItem;
 import com.leclowndu93150.carbort.content.items.UnstableIngotItem;
-import com.leclowndu93150.carbort.registries.CBDataComponents;
+import com.leclowndu93150.carbort.data.CBAttachmentTypes;
+import com.leclowndu93150.carbort.networking.ShrinkSyncPayload;
+import com.leclowndu93150.carbort.data.CBDataComponents;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +18,9 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import static com.leclowndu93150.carbort.content.items.UnstableIngotItem.DAMAGE_CALCULATOR;
 
@@ -67,6 +72,14 @@ public class CommonCarbortEvents {
                     }
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void playerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        Player player = event.getEntity();
+        if (player instanceof ServerPlayer serverPlayer) {
+            PacketDistributor.sendToPlayer(serverPlayer, new ShrinkSyncPayload(player.getData(CBAttachmentTypes.SIZE)));
         }
     }
 }

@@ -26,18 +26,18 @@ public class ChunkAnalyzerItem extends SimpleEnergyItem implements MenuProvider 
 
     @Override
     public int getEnergyUsage() {
-        return CarbortConfig.chunkAnalyzerEnergyUsage;
+        return CarbortConfig.itemEnergyUsage(this);
+    }
+
+    @Override
+    public int getCapacity() {
+        return CarbortConfig.itemEnergyCapacity(this);
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         player.openMenu(this);
         return InteractionResultHolder.success(player.getItemInHand(usedHand));
-    }
-
-    @Override
-    public int getCapacity() {
-        return CarbortConfig.chunkAnalyzerMaxEnergy;
     }
 
     @Override

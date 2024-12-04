@@ -1,6 +1,7 @@
 package com.leclowndu93150.carbort.networking;
 
 import com.leclowndu93150.carbort.CarbortConfig;
+import com.leclowndu93150.carbort.api.items.IEnergyItem;
 import com.leclowndu93150.carbort.content.items.ChunkAnalyzerItem;
 import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerMenu;
 import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerScreen;
@@ -30,11 +31,12 @@ public final class PayloadActions {
                 if (player instanceof ServerPlayer serverPlayer && player.containerMenu instanceof ChunkAnalyzerMenu menu) {
                     ItemStack itemStack = getAnalyzer(player);
                     IEnergyStorage energyStorage = CapabilityUtils.itemEnergyStorage(itemStack);
-                    int drained = energyStorage.extractEnergy(CarbortConfig.chunkAnalyzerEnergyUsage, true);
-                    if (drained == CarbortConfig.chunkAnalyzerEnergyUsage) {
+                    int energyUsage = ((ChunkAnalyzerItem) itemStack.getItem()).getEnergyUsage();
+                    int drained = energyStorage.extractEnergy(energyUsage, true);
+                    if (drained == energyUsage) {
                         ChunkAnalyzerHelper helper = new ChunkAnalyzerHelper(player, player.level());
                         Object2IntMap<Block> blocks = helper.scan();
-                        energyStorage.extractEnergy(CarbortConfig.chunkAnalyzerEnergyUsage, false);
+                        energyStorage.extractEnergy(energyUsage, false);
                         PacketDistributor.sendToPlayer(serverPlayer, new ChunkAnalyzerTogglePayload((byte) 1));
                         List<Integer> blocks1 = blocks.keySet()
                                 .stream()
