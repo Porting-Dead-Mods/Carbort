@@ -1,10 +1,16 @@
 package com.leclowndu93150.carbort.api.items;
 
 import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.FastColor;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.neoforged.neoforge.energy.IEnergyStorage;
+
+import java.util.List;
 
 public abstract class SimpleEnergyItem extends Item implements IEnergyItem {
     public SimpleEnergyItem(Properties properties) {
@@ -29,5 +35,25 @@ public abstract class SimpleEnergyItem extends Item implements IEnergyItem {
         return FastColor.ARGB32.color(235, 7, 7);
     }
 
-    // TODO: Fancy tooltip
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        IEnergyStorage energyStorage = CapabilityUtils.itemEnergyStorage(stack);
+        tooltipComponents.add(Component.literal("Stored: ")
+                .append(energyStorage.getEnergyStored() + "/" + energyStorage.getMaxEnergyStored())
+                        .withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.literal("Usage: ")
+                .append(String.valueOf(getEnergyUsage()))
+                .withStyle(ChatFormatting.GRAY));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    public boolean useEnergy(Player player, ItemStack itemStack) {
+        IEnergyStorage energyStorage = CapabilityUtils.itemEnergyStorage(itemStack);
+        if (player.hasInfiniteMaterials() || energyStorage.extractEnergy(getEnergyUsage(), true) == getEnergyUsage()) {
+            energyStorage.extractEnergy(getEnergyUsage(), false);
+            return true;
+        }
+        return false;
+    }
+
 }

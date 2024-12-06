@@ -6,7 +6,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.SimpleTier;
 import net.neoforged.neoforge.common.Tags;
 
-public class ToolTiers {
+public final class ToolTiers {
     public static final Tier PARTY = new SimpleTier(
             Tags.Blocks.NEEDS_NETHERITE_TOOL,
             6512,
@@ -22,5 +22,13 @@ public class ToolTiers {
             4f,
             50,
             () -> Ingredient.of(CBItems.DEEPSTEAL_INGOT)
+    );
+    public static final Tier BEDROCKIUM = new SimpleTier(
+            Tags.Blocks.NEEDS_NETHERITE_TOOL,
+            13024,
+            20f,
+            4f,
+            50,
+            () -> Ingredient.of(CBItems.BEDROCKIUM_INGOT)
     );
 }

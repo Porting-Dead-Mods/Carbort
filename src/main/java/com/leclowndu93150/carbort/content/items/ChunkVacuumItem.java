@@ -60,27 +60,21 @@ public class ChunkVacuumItem extends SimpleEnergyItem {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
         if (level instanceof ServerLevel serverLevel && livingEntity instanceof ServerPlayer serverPlayer) {
-            IEnergyStorage energyStorage = serverPlayer.getMainHandItem().getCapability(Capabilities.EnergyStorage.ITEM);
-
             BlockPos pos = getPlayerPOVHitResult(level, serverPlayer, ClipContext.Fluid.NONE).getBlockPos();
-            if (pos.getY() < level.getMinBuildHeight()
-                    && level.getBlockState(pos).is(Blocks.VOID_AIR)
-                    && level.dimensionTypeRegistration().is(BuiltinDimensionTypes.OVERWORLD)) {
-                ItemStack offhandItem = serverPlayer.getOffhandItem();
-                IFluidHandler fluidHandler = offhandItem.getCapability(Capabilities.FluidHandler.ITEM);
-                level.playSound(null, pos, SoundEvents.WITHER_HURT, SoundSource.BLOCKS);
-                if (fluidHandler != null) {
-                    fluidHandler.fill(new FluidStack(Fluids.LAVA, 50), IFluidHandler.FluidAction.EXECUTE);
-                    serverPlayer.startUsingItem(InteractionHand.MAIN_HAND);
-                }
-                if (!serverPlayer.hasInfiniteMaterials()) {
-                    energyStorage.extractEnergy(getEnergyUsage() / 10, false);
-                }
-            } else {
-                ChunkVacuumHelper helper = new ChunkVacuumHelper(serverLevel, serverPlayer, pos);
-                serverLevel.getServer().doRunTask(new TickTask(0, helper::removeArea));
-                if (!serverPlayer.hasInfiniteMaterials()) {
-                    energyStorage.extractEnergy(getEnergyUsage(), false);
+            if (useEnergy(serverPlayer, stack)) {
+                if (pos.getY() < level.getMinBuildHeight()
+                        && level.getBlockState(pos).is(Blocks.VOID_AIR)
+                        && level.dimensionTypeRegistration().is(BuiltinDimensionTypes.OVERWORLD)) {
+                    ItemStack offhandItem = serverPlayer.getOffhandItem();
+                    IFluidHandler fluidHandler = offhandItem.getCapability(Capabilities.FluidHandler.ITEM);
+                    level.playSound(null, pos, SoundEvents.WITHER_HURT, SoundSource.BLOCKS);
+                    if (fluidHandler != null) {
+                        fluidHandler.fill(new FluidStack(Fluids.LAVA, 50), IFluidHandler.FluidAction.EXECUTE);
+                        serverPlayer.startUsingItem(InteractionHand.MAIN_HAND);
+                    }
+                } else {
+                    ChunkVacuumHelper helper = new ChunkVacuumHelper(serverLevel, serverPlayer, pos);
+                    serverLevel.getServer().doRunTask(new TickTask(0, helper::removeArea));
                 }
             }
         }

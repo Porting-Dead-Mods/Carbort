@@ -5,9 +5,12 @@ import com.leclowndu93150.carbort.client.renderer.blockentities.BedrockDrillBER;
 import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerScreen;
 import com.leclowndu93150.carbort.registries.CBBlockEntities;
 import com.leclowndu93150.carbort.data.CBDataComponents;
+import com.leclowndu93150.carbort.registries.CBEntityTypes;
 import com.leclowndu93150.carbort.registries.CBItems;
 import com.leclowndu93150.carbort.registries.CBMenus;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
@@ -17,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -36,10 +40,15 @@ public final class CarbortClient {
         modEventBus.addListener(this::registerColorHandlers);
         modEventBus.addListener(this::registerClientExtensions);
         modEventBus.addListener(this::registerModels);
+        modEventBus.addListener(this::onClientSetup);
     }
 
     private void registerBERs(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(CBBlockEntities.BEDROCK_DRILL.get(), BedrockDrillBER::new);
+    }
+
+    private void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> EntityRenderers.register(CBEntityTypes.DYNAMITE.get(), pContext -> new ThrownItemRenderer<>(pContext, 2, false)));
     }
 
     private void registerMenuScreens(RegisterMenuScreensEvent event) {
@@ -70,7 +79,7 @@ public final class CarbortClient {
             public HumanoidModel.@NotNull ArmPose getArmPose(LivingEntity entityLiving, InteractionHand hand, ItemStack itemStack) {
                 return HumanoidModel.ArmPose.CROSSBOW_CHARGE;
             }
-        }, CBItems.IRON_GREAT_SWORD);
+        }, CBItems.BEDROCKIUM_BLADE);
     }
 
     private void registerBakedModels(ModelEvent.RegisterAdditional event) {

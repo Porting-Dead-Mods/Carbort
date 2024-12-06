@@ -7,6 +7,7 @@ import com.leclowndu93150.carbort.data.CBAttachmentTypes;
 import com.leclowndu93150.carbort.data.CBDataComponents;
 import com.leclowndu93150.carbort.networking.ShrinkSyncPayload;
 import com.leclowndu93150.carbort.networking.ShrinkinatorSizeSyncPayload;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
@@ -37,10 +38,13 @@ public class ShrinkinatorItem extends SimpleEnergyItem implements ScrollableItem
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         ItemStack itemStack = player.getItemInHand(usedHand);
-        float data = itemStack.getOrDefault(CBDataComponents.SIZE, 1f);
-        player.setData(CBAttachmentTypes.SIZE, data);
-        player.refreshDimensions();
-        PacketDistributor.sendToAllPlayers(new ShrinkSyncPayload(data));
+        if (useEnergy(player, itemStack)) {
+            int size = itemStack.getOrDefault(CBDataComponents.SIZE, 10);
+            player.setData(CBAttachmentTypes.SIZE, size / 10f);
+            player.refreshDimensions();
+            PacketDistributor.sendToAllPlayers(new ShrinkSyncPayload(size / 10f));
+            return InteractionResultHolder.success(itemStack);
+        }
         return super.use(level, player, usedHand);
     }
 
@@ -50,22 +54,24 @@ public class ShrinkinatorItem extends SimpleEnergyItem implements ScrollableItem
             boolean up = scrollDeltaY == 1;
             boolean down = scrollDeltaY == -1;
 
-            float data = itemStack.getOrDefault(CBDataComponents.SIZE, 1f);
-            if (up && data < 10) {
-                itemStack.set(CBDataComponents.SIZE, data + 0.1f);
-            } else if (down && data > 0) {
-                itemStack.set(CBDataComponents.SIZE, data - 0.1f);
+            int data = itemStack.getOrDefault(CBDataComponents.SIZE, 10);
+            if (up && data < 100) {
+                itemStack.set(CBDataComponents.SIZE, data + 1);
+            } else if (down && data > 1) {
+                itemStack.set(CBDataComponents.SIZE, data - 1);
             }
 
-            float size = itemStack.getOrDefault(CBDataComponents.SIZE, 1f);
+            int size = itemStack.getOrDefault(CBDataComponents.SIZE, 10);
             PacketDistributor.sendToServer(new ShrinkinatorSizeSyncPayload(size, usedHand));
-            player.displayClientMessage(Component.literal("Size: " + size), true);
+            player.displayClientMessage(Component.literal(String.format("Size: %.1f", (float) size / 10)), true);
         }
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.literal("Size: " + stack.getOrDefault(CBDataComponents.SIZE, 1f)));
+        int size = stack.getOrDefault(CBDataComponents.SIZE, 10);
+        tooltipComponents.add(Component.literal(String.format("Size: %.1f", (float) size / 10))
+                .withStyle(ChatFormatting.DARK_GRAY));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

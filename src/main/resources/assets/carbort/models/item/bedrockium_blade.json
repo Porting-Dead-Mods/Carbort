@@ -1,0 +1,21 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "neoforge:separate_transforms",
+  "textures": {
+    "layer0": "carbort:item/bedrockium_blade_gui"
+  },
+  "base": {
+    "parent": "carbort:item/bedrockium_blade_handheld"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "carbort:item/bedrockium_blade_gui"
+    },
+    "fixed": {
+      "parent": "carbort:item/bedrockium_blade_gui"
+    },
+    "ground": {
+      "parent": "carbort:item/bedrockium_blade_gui"
+    }
+  }
+}

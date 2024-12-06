@@ -37,6 +37,7 @@ public final class Carbort {
         CBItems.ITEMS.register(modEventBus);
         CBBlocks.BLOCKS.register(modEventBus);
         CBBlockEntities.REGISTER.register(modEventBus);
+        CBEntityTypes.ENTITY_TYPES.register(modEventBus);
         CBMobEffects.EFFECTS.register(modEventBus);
         CBMobEffects.POTIONS.register(modEventBus);
         CBDataComponents.DATA_COMPONENTS.register(modEventBus);

@@ -12,9 +12,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record ShrinkinatorSizeSyncPayload(float size, InteractionHand usedHand) implements CustomPacketPayload {
+public record ShrinkinatorSizeSyncPayload(int size, InteractionHand usedHand) implements CustomPacketPayload {
     public static final StreamCodec<ByteBuf, ShrinkinatorSizeSyncPayload> STREAM_CODEC = StreamCodec.composite(
-            ByteBufCodecs.FLOAT,
+            ByteBufCodecs.INT,
             ShrinkinatorSizeSyncPayload::size,
             CodecUtils.enumStreamCodec(InteractionHand.class),
             ShrinkinatorSizeSyncPayload::usedHand,

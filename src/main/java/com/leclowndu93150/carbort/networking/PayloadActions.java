@@ -28,15 +28,12 @@ public final class PayloadActions {
         if (payload.payloadType() == 0) {
             Player player = ctx.player();
             player.level().getServer().doRunTask(new TickTask(0, () -> {
-                if (player instanceof ServerPlayer serverPlayer && player.containerMenu instanceof ChunkAnalyzerMenu menu) {
+                if (player instanceof ServerPlayer serverPlayer && player.containerMenu instanceof ChunkAnalyzerMenu) {
                     ItemStack itemStack = getAnalyzer(player);
-                    IEnergyStorage energyStorage = CapabilityUtils.itemEnergyStorage(itemStack);
-                    int energyUsage = ((ChunkAnalyzerItem) itemStack.getItem()).getEnergyUsage();
-                    int drained = energyStorage.extractEnergy(energyUsage, true);
-                    if (drained == energyUsage) {
+                    ChunkAnalyzerItem item = (ChunkAnalyzerItem) itemStack.getItem();
+                    if (item.useEnergy(player, itemStack)) {
                         ChunkAnalyzerHelper helper = new ChunkAnalyzerHelper(player, player.level());
                         Object2IntMap<Block> blocks = helper.scan();
-                        energyStorage.extractEnergy(energyUsage, false);
                         PacketDistributor.sendToPlayer(serverPlayer, new ChunkAnalyzerTogglePayload((byte) 1));
                         List<Integer> blocks1 = blocks.keySet()
                                 .stream()
@@ -44,7 +41,7 @@ public final class PayloadActions {
                                 .toList();
                         ChunkAnalyzerDataPayload payload1 = new ChunkAnalyzerDataPayload(blocks1, blocks.values().intStream().boxed().toList());
                         PacketDistributor.sendToPlayer(serverPlayer, payload1);
-                    } else  {
+                    } else {
                         PacketDistributor.sendToPlayer(serverPlayer, new ChunkAnalyzerTogglePayload((byte) 2));
                     }
                 }

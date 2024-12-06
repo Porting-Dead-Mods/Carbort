@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "carbort:item/iron_great_sword"
+    "layer0": "carbort:item/bedrockium_blade"
   },
   "display": {
     "thirdperson_righthand": {

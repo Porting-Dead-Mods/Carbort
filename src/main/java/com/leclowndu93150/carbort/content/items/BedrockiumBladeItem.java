@@ -10,15 +10,15 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
-public class FuneralPickaxeItem extends PickaxeItem implements IFluidItem {
-    public FuneralPickaxeItem(Properties properties) {
-        super(ToolTiers.FUNERAL, properties);
+public class BedrockiumBladeItem extends SwordItem implements IFluidItem {
+    public BedrockiumBladeItem(Properties properties) {
+        super(ToolTiers.BEDROCKIUM, properties);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class FuneralPickaxeItem extends PickaxeItem implements IFluidItem {
 
     @Override
     public boolean isFluidValid(int tank, FluidStack stack) {
-        // TODO: VOid fluid
+        // TODO: Void fluid
         return stack.is(Tags.Fluids.LAVA);
     }
 

@@ -20,12 +20,15 @@ public final class CBDataComponents {
     public static final Supplier<DataComponentType<SimpleFluidContent>> FLUID_STORAGE = DATA_COMPONENTS.register("fluid",
             () -> DataComponentType.<SimpleFluidContent>builder().persistent(SimpleFluidContent.CODEC).networkSynchronized(SimpleFluidContent.STREAM_CODEC).build());
 
+    // UNSTABLE INGOT
     public static final Supplier<DataComponentType<Integer>> TIMER = DATA_COMPONENTS.register("timer",
             () -> DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
+    // UNSTABLE INGOT && FUNERAL PICKAXE
     public static final Supplier<DataComponentType<Boolean>> ACTIVE = registerDataComponentType("active",
             () -> builder -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL));
-    public static final Supplier<DataComponentType<Float>> SIZE = registerDataComponentType("size",
-            () -> builder -> builder.persistent(Codec.FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
+    // SHRINKINATOR
+    public static final Supplier<DataComponentType<Integer>> SIZE = registerDataComponentType("size",
+            () -> builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
 
     public static <T> Supplier<DataComponentType<T>> registerDataComponentType(
             String name, Supplier<UnaryOperator<DataComponentType.Builder<T>>> builderOperator) {
