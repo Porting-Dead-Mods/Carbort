@@ -1,3 +1,17 @@
-// 1.21.1	2024-11-10T11:12:05.0127252	Recipes
+// 1.21.1	2024-12-08T14:18:00.769925371	Recipes
+4f6f9df6533fe6387ded0046691696adaafafc5f data/carbort/advancement/recipes/decorations/bedrock_drill.json
 3e6e10b5b918f24573e390baf114595590f1a8c3 data/carbort/advancement/recipes/misc/unstable_ingot.json
+83c4b3f02b8f4ac263f3316a3e9b128666280273 data/carbort/advancement/recipes/tools/chunk_analyzer.json
+49621bfd65b9ecf82a42417b0e6b453755cef8c4 data/carbort/advancement/recipes/tools/chunk_vacuum.json
+ce98bbc09c259bcc6df18c963c4c7a6f4880279f data/carbort/advancement/recipes/tools/funeral_pickaxe.json
+77db37b03e5dcb168cde91f156012b1c2f2fd231 data/carbort/advancement/recipes/tools/golden_bean.json
+d96160f2562f63ef153c34278064d88f5d42d560 data/carbort/advancement/recipes/tools/healing_axe.json
+98e0011f7d15b7f6afa303c17cbfc6b8ee003f4a data/carbort/advancement/recipes/tools/shrinkinator.json
+b4d4a1023ae84e23108e0910de87a004e72dea42 data/carbort/recipe/bedrock_drill.json
+c75e0f0cb51c26bacc037087771eea9a9dcdcbb8 data/carbort/recipe/chunk_analyzer.json
+419f203dc8d46099b2474f400839fcee052c1099 data/carbort/recipe/chunk_vacuum.json
+44f4a2e7c5509f09acc9ee996e8381671fdd3368 data/carbort/recipe/funeral_pickaxe.json
+6cb608a9f99789571f8875e4179da97e431ebba0 data/carbort/recipe/golden_bean.json
+27d235b53a20dcfd9a74194bd75e31353131b3c2 data/carbort/recipe/healing_axe.json
+572632d20d1213d387857eb53e875e75ef3d869e data/carbort/recipe/shrinkinator.json
 254d13fee08e76f937288a3cc1867cade30d0299 data/carbort/recipe/unstable_ingot.json

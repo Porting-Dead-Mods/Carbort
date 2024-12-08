@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.content.screen;
+package com.leclowndu93150.carbort.client.screen;
 
 import com.mojang.blaze3d.vertex.Tesselator;
 import net.minecraft.client.Minecraft;

@@ -7,10 +7,15 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
+import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -30,6 +35,7 @@ public class CBItemModelProvider extends ItemModelProvider {
         basicItem(CBItems.FIRE_IN_A_BOTTLE);
         basicItem(CBItems.DIVISION_SIGIL);
         basicItem(CBItems.BEDROCKIUM_INGOT);
+        basicItem(CBItems.BEDROCKIUM_DUST);
         basicItem(CBItems.DEEPSTEAL_INGOT);
         basicItem(CBItems.DYNAMITE);
 
@@ -37,6 +43,9 @@ public class CBItemModelProvider extends ItemModelProvider {
         handHeldItem(CBItems.FUNERAL_PICKAXE);
         handHeldItem(CBItems.PARTY_PICKAXE);
         handHeldItem(CBItems.HEALING_AXE);
+        handHeldItem(CBItems.WATERING_CAN);
+
+        wateringCanModel(CBItems.WATERING_CAN);
 
         blockItems();
     }
@@ -76,5 +85,33 @@ public class CBItemModelProvider extends ItemModelProvider {
         getBuilder(item.get().toString())
                 .parent(new ModelFile.UncheckedModelFile(parent))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(loc.getNamespace(), "item/" + loc.getPath()));
+    }
+
+    private void wateringCanModel(ItemLike item) {
+        withExistingParent(name(item), ResourceLocation.fromNamespaceAndPath("neoforge", "item/default"))
+                .texture("base", itemTexture(item))
+                .texture("fluid", extend(itemTexture(item), "_overlay"))
+                .texture("particle", extend(itemTexture(item), "_overlay"))
+                .customLoader(DynamicFluidContainerModelBuilder::begin)
+                .applyTint(true)
+                .flipGas(true)
+                .fluid(Fluids.EMPTY);
+    }
+
+    public String name(ItemLike item) {
+        return BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
+    }
+
+    private ResourceLocation extend(ResourceLocation rl, String suffix) {
+        return ResourceLocation.fromNamespaceAndPath(rl.getNamespace(), rl.getPath() + suffix);
+    }
+
+    private ResourceLocation key(ItemLike item) {
+        return BuiltInRegistries.ITEM.getKey(item.asItem());
+    }
+
+    public ResourceLocation itemTexture(ItemLike item) {
+        ResourceLocation name = key(item);
+        return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), ModelProvider.ITEM_FOLDER + "/" + name.getPath());
     }
 }

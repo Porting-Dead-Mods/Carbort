@@ -22,7 +22,6 @@ public class ShrinkEvents {
 
             float size = player.getData(CBAttachmentTypes.SIZE);
 
-            Carbort.LOGGER.debug("Size: {}", size);
             if (size != 1) {
                 event.getPoseStack().pushPose();
 

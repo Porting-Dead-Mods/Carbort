@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=east": {
+    "active=false,facing=east": {
       "model": "carbort:block/bedrock_drill",
       "y": 90
     },
-    "facing=north": {
+    "active=false,facing=north": {
       "model": "carbort:block/bedrock_drill"
     },
-    "facing=south": {
+    "active=false,facing=south": {
       "model": "carbort:block/bedrock_drill",
       "y": 180
     },
-    "facing=west": {
+    "active=false,facing=west": {
       "model": "carbort:block/bedrock_drill",
+      "y": 270
+    },
+    "active=true,facing=east": {
+      "model": "carbort:block/bedrock_drill_active",
+      "y": 90
+    },
+    "active=true,facing=north": {
+      "model": "carbort:block/bedrock_drill_active"
+    },
+    "active=true,facing=south": {
+      "model": "carbort:block/bedrock_drill_active",
+      "y": 180
+    },
+    "active=true,facing=west": {
+      "model": "carbort:block/bedrock_drill_active",
       "y": 270
     }
   }

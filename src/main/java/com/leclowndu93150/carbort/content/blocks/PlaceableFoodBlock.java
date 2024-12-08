@@ -30,7 +30,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings("deprecation")
 public abstract class PlaceableFoodBlock extends Block implements EntityBlock {
     public static final int MAX_SIZE = 7;
     static final IntegerProperty SIZE = IntegerProperty.create("size", 1,MAX_SIZE);

@@ -1,7 +1,9 @@
-// 1.21.1	2024-12-03T19:50:06.601670208	Item Models: carbort
+// 1.21.1	2024-12-08T11:02:21.372612029	Item Models: carbort
 a45ed4013794544639dd8410330e73fcedbf41bb assets/carbort/models/item/bean.json
 f66b17585aa3815322f2dcc8278e5203ed0ab18e assets/carbort/models/item/bean_wand.json
 044fecf12bb49ab4714fa125b416740776dffd31 assets/carbort/models/item/bedrock_drill.json
+e27a2190f9ca3a948914c463724a3ff37dcd5849 assets/carbort/models/item/bedrock_ore.json
+5cef6d813869f284e6f456817c4995b940cbd3a2 assets/carbort/models/item/bedrockium_dust.json
 0afd690876654ab329015c02e029fd9e764a7d89 assets/carbort/models/item/bedrockium_ingot.json
 44943658365709a2625f083514959d2dcb0b08b0 assets/carbort/models/item/chunk_analyzer.json
 018d73fc2c24ef0f56835e5d7efc8752a10c9093 assets/carbort/models/item/deepsteal_ingot.json
@@ -14,3 +16,4 @@ c97a8ac8cf5ac3483cbaa2a8de9303a5d2e35a50 assets/carbort/models/item/funeral_pick
 25f01b54f85eb6202045452fde31d0309952a9a8 assets/carbort/models/item/party_pickaxe.json
 74bd839641d7d336279c4cc7ce962bfe45bb07ee assets/carbort/models/item/shrinkinator.json
 71f9869185fe189e0c5846be05a987b5aaf9b788 assets/carbort/models/item/tormented_soul.json
+c512d3474502fb2faf777194c03db636cd4babfe assets/carbort/models/item/watering_can.json

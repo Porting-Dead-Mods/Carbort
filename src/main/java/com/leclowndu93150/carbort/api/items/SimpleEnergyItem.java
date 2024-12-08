@@ -40,16 +40,22 @@ public abstract class SimpleEnergyItem extends Item implements IEnergyItem {
         IEnergyStorage energyStorage = CapabilityUtils.itemEnergyStorage(stack);
         tooltipComponents.add(Component.literal("Stored: ")
                 .append(energyStorage.getEnergyStored() + "/" + energyStorage.getMaxEnergyStored())
-                        .withStyle(ChatFormatting.GRAY));
+                .append("FE")
+                .withStyle(ChatFormatting.GRAY));
         tooltipComponents.add(Component.literal("Usage: ")
                 .append(String.valueOf(getEnergyUsage()))
+                .append("FE")
                 .withStyle(ChatFormatting.GRAY));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     public boolean useEnergy(Player player, ItemStack itemStack) {
         IEnergyStorage energyStorage = CapabilityUtils.itemEnergyStorage(itemStack);
-        if (player.hasInfiniteMaterials() || energyStorage.extractEnergy(getEnergyUsage(), true) == getEnergyUsage()) {
+        if (player.hasInfiniteMaterials()) {
+            return true;
+        }
+
+        if (energyStorage.extractEnergy(getEnergyUsage(), true) == getEnergyUsage()) {
             energyStorage.extractEnergy(getEnergyUsage(), false);
             return true;
         }

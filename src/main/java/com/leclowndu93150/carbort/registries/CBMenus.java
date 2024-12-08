@@ -1,7 +1,7 @@
 package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
-import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerMenu;
+import com.leclowndu93150.carbort.content.menu.ChunkAnalyzerMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;

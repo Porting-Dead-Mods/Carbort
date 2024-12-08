@@ -1,11 +1,8 @@
 package com.leclowndu93150.carbort.networking;
 
-import com.leclowndu93150.carbort.CarbortConfig;
-import com.leclowndu93150.carbort.api.items.IEnergyItem;
 import com.leclowndu93150.carbort.content.items.ChunkAnalyzerItem;
-import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerMenu;
-import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerScreen;
-import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import com.leclowndu93150.carbort.content.menu.ChunkAnalyzerMenu;
+import com.leclowndu93150.carbort.client.screen.ChunkAnalyzerScreen;
 import com.leclowndu93150.carbort.utils.ChunkAnalyzerHelper;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.client.Minecraft;
@@ -16,7 +13,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.Nullable;

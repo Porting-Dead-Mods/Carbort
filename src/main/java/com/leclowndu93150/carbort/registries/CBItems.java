@@ -7,6 +7,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -29,13 +31,15 @@ public final class CBItems {
             .component(CBDataComponents.ACTIVE, false)
             .component(CBDataComponents.FLUID_STORAGE, SimpleFluidContent.EMPTY)
             .attributes(PickaxeItem.createAttributes(ToolTiers.FUNERAL, 3, -2.8F))));
+    public static final DeferredItem<HealingAxeItem> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
     public static final DeferredItem<Item> BEAN_WAND = ITEMS.register("bean_wand", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<WateringCanItem> WATERING_CAN = ITEMS.register("watering_can", () -> new WateringCanItem(new Item.Properties()
+            .component(CBDataComponents.FLUID_STORAGE, SimpleFluidContent.EMPTY)));
     public static final DeferredItem<ShrinkinatorItem> SHRINKINATOR = ITEMS.register("shrinkinator", () -> new ShrinkinatorItem(new Item.Properties()
             .stacksTo(1)
             .rarity(Rarity.RARE)
             .component(CBDataComponents.SIZE, 10)
             .component(CBDataComponents.ENERGY_STORAGE, 0)));
-    public static final DeferredItem<HealingAxeItem> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
     public static final DeferredItem<ChunkAnalyzerItem> CHUNK_ANALYZER = ITEMS.register("chunk_analyzer",
             () -> new ChunkAnalyzerItem(new Item.Properties()
                     .stacksTo(1)
@@ -66,6 +70,7 @@ public final class CBItems {
 
     public static final DeferredItem<UnstableIngotItem> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
     public static final DeferredItem<Item> BEDROCKIUM_INGOT = ITEMS.register("bedrockium_ingot", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BEDROCKIUM_DUST = ITEMS.register("bedrockium_dust", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> DEEPSTEAL_INGOT = ITEMS.register("deepsteal_ingot", () -> new Item(new Item.Properties()));
     public static final DeferredItem<DynamiteItem> DYNAMITE = ITEMS.register("dynamite", () -> new DynamiteItem(new Item.Properties()));
 

@@ -1,2 +1,5 @@
-// 1.21.1	2024-10-15T19:12:00.26978655	Block States: carbort
-4dd1cf9dbbbd1fdbca9be1e62cf1e2a6ee1b6907 assets/carbort/blockstates/bedrock_drill.json
+// 1.21.1	2024-12-08T18:00:00.064233668	Block States: carbort
+f0c9d28f520d83f2199d0bf28428a0a59213a25a assets/carbort/blockstates/bedrock_drill.json
+1a43f0b5aece3a31d727e79e359838dc9854a99f assets/carbort/blockstates/bedrock_ore.json
+599b041231d3cb85ed5b26befabd34e84c55ffbd assets/carbort/models/block/bedrock_drill_active.json
+aedb08ebe92ac5439660615ec552b057a25a6dc1 assets/carbort/models/block/bedrock_ore.json

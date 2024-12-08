@@ -9,7 +9,6 @@ import com.leclowndu93150.carbort.networking.ShrinkSyncPayload;
 import com.leclowndu93150.carbort.networking.ShrinkinatorSizeSyncPayload;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -27,12 +26,12 @@ public class ShrinkinatorItem extends SimpleEnergyItem implements ScrollableItem
 
     @Override
     public int getEnergyUsage() {
-        return CarbortConfig.itemEnergyUsage(this);
+        return CarbortConfig.itemBlockEnergyUsage(this);
     }
 
     @Override
     public int getCapacity() {
-        return CarbortConfig.itemEnergyCapacity(this);
+        return CarbortConfig.itemBlockEnergyCapacity(this);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.content.screen;
+package com.leclowndu93150.carbort.content.menu;
 
 import com.leclowndu93150.carbort.content.items.ChunkAnalyzerItem;
 import com.leclowndu93150.carbort.registries.CBMenus;

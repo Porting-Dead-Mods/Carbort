@@ -1,6 +1,7 @@
-package com.leclowndu93150.carbort.content.screen;
+package com.leclowndu93150.carbort.client.screen;
 
 import com.leclowndu93150.carbort.Carbort;
+import com.leclowndu93150.carbort.content.menu.ChunkAnalyzerMenu;
 import com.leclowndu93150.carbort.networking.ChunkAnalyzerTogglePayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;

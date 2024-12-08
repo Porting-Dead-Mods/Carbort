@@ -1,10 +1,8 @@
 package com.leclowndu93150.carbort.content.items;
 
 import com.leclowndu93150.carbort.CarbortConfig;
-import com.leclowndu93150.carbort.api.items.IEnergyItem;
 import com.leclowndu93150.carbort.api.items.SimpleEnergyItem;
-import com.leclowndu93150.carbort.content.screen.ChunkAnalyzerMenu;
-import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import com.leclowndu93150.carbort.content.menu.ChunkAnalyzerMenu;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -12,10 +10,8 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.energy.IEnergyStorage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,12 +22,12 @@ public class ChunkAnalyzerItem extends SimpleEnergyItem implements MenuProvider 
 
     @Override
     public int getEnergyUsage() {
-        return CarbortConfig.itemEnergyUsage(this);
+        return CarbortConfig.itemBlockEnergyUsage(this);
     }
 
     @Override
     public int getCapacity() {
-        return CarbortConfig.itemEnergyCapacity(this);
+        return CarbortConfig.itemBlockEnergyCapacity(this);
     }
 
     @Override

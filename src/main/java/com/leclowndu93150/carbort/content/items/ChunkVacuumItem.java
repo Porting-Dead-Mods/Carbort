@@ -1,12 +1,10 @@
 package com.leclowndu93150.carbort.content.items;
 
-import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.CarbortConfig;
 import com.leclowndu93150.carbort.api.items.SimpleEnergyItem;
 import com.leclowndu93150.carbort.utils.ChunkVacuumHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.data.worldgen.DimensionTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
@@ -14,7 +12,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -24,8 +21,6 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
-import net.minecraft.world.level.dimension.DimensionDefaults;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.IEnergyStorage;
@@ -39,12 +34,12 @@ public class ChunkVacuumItem extends SimpleEnergyItem {
 
     @Override
     public int getEnergyUsage() {
-        return CarbortConfig.itemEnergyUsage(this);
+        return CarbortConfig.itemBlockEnergyUsage(this);
     }
 
     @Override
     public int getCapacity() {
-        return CarbortConfig.itemEnergyCapacity(this);
+        return CarbortConfig.itemBlockEnergyCapacity(this);
     }
 
     @Override

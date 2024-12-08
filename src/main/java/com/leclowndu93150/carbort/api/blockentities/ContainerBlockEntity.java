@@ -6,6 +6,8 @@ import com.leclowndu93150.carbort.api.capabilities.IOActions;
 import com.leclowndu93150.carbort.api.capabilities.SidedEnergyStorage;
 import com.leclowndu93150.carbort.api.capabilities.SidedFluidHandler;
 import com.leclowndu93150.carbort.api.capabilities.SidedItemHandler;
+import com.leclowndu93150.carbort.api.items.IEnergyItem;
+import com.leclowndu93150.carbort.utils.CapabilityUtils;
 import it.unimi.dsi.fastutil.Pair;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
@@ -19,7 +21,9 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -244,6 +248,23 @@ public abstract class ContainerBlockEntity extends BlockEntity {
             }
         }
         return itemStacks;
+    }
+
+    public int getEnergyUsage() {
+        return 0;
+    }
+
+    protected boolean useEnergy() {
+        IEnergyStorage energyStorage = getEnergyStorage();
+        if (energyStorage.extractEnergy(getEnergyUsage(), true) == getEnergyUsage()) {
+            energyStorage.extractEnergy(getEnergyUsage(), false);
+            return true;
+        }
+        return false;
+    }
+
+    protected Block asBlock() {
+        return getBlockState().getBlock();
     }
 
     public <T> T getHandlerOnSide(BlockCapability<T, @Nullable Direction> capability, SidedHandlerSupplier<T> handlerSupplier, Direction direction, T baseHandler) {

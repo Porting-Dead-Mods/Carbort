@@ -39,7 +39,7 @@ public class DivisionSigilItem extends Item {
         Player player = context.getPlayer();
         ItemStack stack = context.getItemInHand();
 
-        if (Boolean.TRUE.equals(stack.get(CBDataComponents.ACTIVE)) || !Objects.requireNonNull(player).isShiftKeyDown() || player.getMainHandItem() != stack) {
+        if (Boolean.TRUE.equals(stack.get(CBDataComponents.ACTIVE)) || !player.isShiftKeyDown() || player.getMainHandItem() != stack) {
             return InteractionResult.FAIL;
         }
 

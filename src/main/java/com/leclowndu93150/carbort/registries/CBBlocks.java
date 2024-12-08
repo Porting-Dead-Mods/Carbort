@@ -29,9 +29,10 @@ public final class CBBlocks {
             ));
     public static final DeferredBlock<BedrockDrillBlock> BEDROCK_DRILL = registerBlockAndItem("bedrock_drill",
             BedrockDrillBlock::new, BlockBehaviour.Properties.of());
-
     public static final DeferredBlock<BeanCropBlock> BEANS = BLOCKS.register("beans",
             () -> new BeanCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
+    public static final DeferredBlock<Block> BEDROCK_ORE = registerBlockAndItem("bedrock_ore",
+            Block::new, BlockBehaviour.Properties.of());
 
     private static <T extends Block> DeferredBlock<T> registerBlockAndItem(String name, Function<BlockBehaviour.Properties, T> blockConstructor, BlockBehaviour.Properties properties) {
         return registerBlockAndItem(name, blockConstructor, properties, true, true);

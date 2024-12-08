@@ -43,9 +43,9 @@ public class BedrockiumBladeItem extends SwordItem implements IFluidItem {
     }
 
     @Override
-    public boolean isFluidValid(int tank, FluidStack stack) {
+    public boolean isFluidValid(ItemStack itemStack, FluidStack fluidStack) {
         // TODO: Void fluid
-        return stack.is(Tags.Fluids.LAVA);
+        return fluidStack.is(Tags.Fluids.LAVA);
     }
 
     @Override

@@ -43,9 +43,9 @@ public class FuneralPickaxeItem extends PickaxeItem implements IFluidItem {
     }
 
     @Override
-    public boolean isFluidValid(int tank, FluidStack stack) {
+    public boolean isFluidValid(ItemStack itemStack, FluidStack fluid) {
         // TODO: VOid fluid
-        return stack.is(Tags.Fluids.LAVA);
+        return fluid.is(Tags.Fluids.LAVA);
     }
 
     @Override
