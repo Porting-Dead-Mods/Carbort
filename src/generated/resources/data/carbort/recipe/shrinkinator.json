@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "carbort:bean"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "P": {
+      "tag": "c:glass_panes/colorless"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "IPI",
+    "IBI",
+    "IRI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:shrinkinator"
+  }
+}

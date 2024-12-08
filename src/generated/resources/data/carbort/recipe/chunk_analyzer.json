@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "E": {
+      "tag": "c:gems/emerald"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "P": {
+      "tag": "c:glass_panes/colorless"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "RE ",
+    "IPI",
+    "IDI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:chunk_analyzer"
+  }
+}

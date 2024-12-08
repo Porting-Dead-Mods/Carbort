@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "carbort:block/bedrock_ore"
+    }
+  }
+}

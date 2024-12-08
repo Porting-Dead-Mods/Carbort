@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "D": {
+      "item": "carbort:deepsteal_ingot"
+    },
+    "T": {
+      "item": "carbort:tormented_soul"
+    }
+  },
+  "pattern": [
+    "DCD",
+    "DTD",
+    "D D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:bedrock_drill"
+  }
+}

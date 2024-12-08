@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "O": {
+      "tag": "c:obsidians"
+    },
+    "U": {
+      "item": "carbort:unstable_ingot"
+    }
+  },
+  "pattern": [
+    "UU",
+    "UO",
+    " O"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:healing_axe"
+  }
+}

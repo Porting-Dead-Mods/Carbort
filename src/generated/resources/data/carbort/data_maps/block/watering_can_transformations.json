@@ -1,0 +1,8 @@
+{
+  "values": {
+    "minecraft:raw_iron_block": {
+      "fluid": "minecraft:lava",
+      "result": "minecraft:iron_block"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:sequence",
+          "children": [
+            {
+              "type": "minecraft:dynamic",
+              "name": "minecraft:alternatives"
+            },
+            {
+              "type": "minecraft:alternatives",
+              "children": [
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.33,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "minecraft:raw_copper"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.33,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "minecraft:raw_iron"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.22,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "minecraft:raw_gold"
+                },
+                {
+                  "type": "minecraft:item",
+                  "conditions": [
+                    {
+                      "chance": 0.11,
+                      "condition": "minecraft:random_chance"
+                    }
+                  ],
+                  "name": "carbort:bedrockium_dust"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "carbort:blocks/bedrock_ore"
+}

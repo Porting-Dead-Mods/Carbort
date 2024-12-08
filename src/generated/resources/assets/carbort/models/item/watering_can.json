@@ -1,0 +1,13 @@
+{
+  "parent": "neoforge:item/default",
+  "apply_tint": true,
+  "flip_gas": true,
+  "fluid": "minecraft:empty",
+  "loader": "neoforge:fluid_container",
+  "textures": {
+    "base": "carbort:item/watering_can",
+    "fluid": "carbort:item/watering_can_overlay",
+    "layer0": "carbort:item/watering_can",
+    "particle": "carbort:item/watering_can_overlay"
+  }
+}

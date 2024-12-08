@@ -1,0 +1,6 @@
+{
+  "parent": "carbort:block/bedrock_drill",
+  "textures": {
+    "0": "carbort:block/bedrock_drill_active"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "carbort:bedrockium_ingot"
+    },
+    "D": {
+      "item": "carbort:deepsteal_ingot"
+    },
+    "P": {
+      "item": "carbort:party_pickaxe"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "DBD",
+    " P ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:funeral_pickaxe"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "carbort:deepsteal_ingot"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "U": {
+      "item": "carbort:unstable_ingot"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "RUU",
+    "D  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:chunk_vacuum"
+  }
+}
