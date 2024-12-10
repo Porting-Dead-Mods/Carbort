@@ -83,6 +83,16 @@ public class CBRecipesProvider extends RecipeProvider {
                 .unlockedBy("has_item", has(CBItems.BEDROCKIUM_INGOT))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CBItems.BEAN_WAND)
+                .pattern("  B")
+                .pattern("LS ")
+                .pattern("SL ")
+                .define('B', CBItems.BEAN_CRYSTAL)
+                .define('L', Tags.Items.LEATHERS)
+                .define('S', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_item", has(CBItems.BEAN))
+                .save(recipeOutput);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, CBItems.GOLDEN_BEAN)
                 .pattern("GGG")
                 .pattern("GBG")
@@ -110,5 +120,7 @@ public class CBRecipesProvider extends RecipeProvider {
                 .define('T', CBItems.TORMENTED_SOUL)
                 .unlockedBy("has_item", has(CBItems.DEEPSTEAL_INGOT))
                 .save(recipeOutput);
+
+        nineBlockStorageRecipes(recipeOutput, RecipeCategory.MISC, CBItems.BEAN, RecipeCategory.BUILDING_BLOCKS, CBBlocks.BEAN_BLOCK);
     }
 }

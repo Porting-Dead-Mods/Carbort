@@ -1,12 +1,14 @@
-// 1.21.1	2024-12-08T14:18:00.769925371	Recipes
+// 1.21.1	2024-12-10T19:00:54.486121427	Recipes
 4f6f9df6533fe6387ded0046691696adaafafc5f data/carbort/advancement/recipes/decorations/bedrock_drill.json
 3e6e10b5b918f24573e390baf114595590f1a8c3 data/carbort/advancement/recipes/misc/unstable_ingot.json
+8e443f4cb0fefcdffdd3524c4f1392c5f0147dd7 data/carbort/advancement/recipes/tools/bean_wand.json
 83c4b3f02b8f4ac263f3316a3e9b128666280273 data/carbort/advancement/recipes/tools/chunk_analyzer.json
 49621bfd65b9ecf82a42417b0e6b453755cef8c4 data/carbort/advancement/recipes/tools/chunk_vacuum.json
 ce98bbc09c259bcc6df18c963c4c7a6f4880279f data/carbort/advancement/recipes/tools/funeral_pickaxe.json
 77db37b03e5dcb168cde91f156012b1c2f2fd231 data/carbort/advancement/recipes/tools/golden_bean.json
 d96160f2562f63ef153c34278064d88f5d42d560 data/carbort/advancement/recipes/tools/healing_axe.json
 98e0011f7d15b7f6afa303c17cbfc6b8ee003f4a data/carbort/advancement/recipes/tools/shrinkinator.json
+911f598f69f25076010221185d6878f7ea73d3bf data/carbort/recipe/bean_wand.json
 b4d4a1023ae84e23108e0910de87a004e72dea42 data/carbort/recipe/bedrock_drill.json
 c75e0f0cb51c26bacc037087771eea9a9dcdcbb8 data/carbort/recipe/chunk_analyzer.json
 419f203dc8d46099b2474f400839fcee052c1099 data/carbort/recipe/chunk_vacuum.json
@@ -15,3 +17,7 @@ c75e0f0cb51c26bacc037087771eea9a9dcdcbb8 data/carbort/recipe/chunk_analyzer.json
 27d235b53a20dcfd9a74194bd75e31353131b3c2 data/carbort/recipe/healing_axe.json
 572632d20d1213d387857eb53e875e75ef3d869e data/carbort/recipe/shrinkinator.json
 254d13fee08e76f937288a3cc1867cade30d0299 data/carbort/recipe/unstable_ingot.json
+a89be59c8355992f330c89749630fd018ced3235 data/minecraft/advancement/recipes/building_blocks/bean_block.json
+156f64b15d7e6c09877d39ed945fd425154930d3 data/minecraft/advancement/recipes/misc/bean.json
+55ff2b5ed6f75a6f55acfd7128ef4d1cdb8b3302 data/minecraft/recipe/bean.json
+27b6ab5db46b3fb106b30bf97ef27104a296cdf0 data/minecraft/recipe/bean_block.json

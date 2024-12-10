@@ -7,8 +7,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -32,9 +30,10 @@ public final class CBItems {
             .component(CBDataComponents.FLUID_STORAGE, SimpleFluidContent.EMPTY)
             .attributes(PickaxeItem.createAttributes(ToolTiers.FUNERAL, 3, -2.8F))));
     public static final DeferredItem<HealingAxeItem> HEALING_AXE = ITEMS.register("healing_axe", () -> new HealingAxeItem(new Item.Properties()));
-    public static final DeferredItem<Item> BEAN_WAND = ITEMS.register("bean_wand", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<BeanWandItem> BEAN_WAND = ITEMS.register("bean_wand", () -> new BeanWandItem(new Item.Properties()));
     public static final DeferredItem<WateringCanItem> WATERING_CAN = ITEMS.register("watering_can", () -> new WateringCanItem(new Item.Properties()
-            .component(CBDataComponents.FLUID_STORAGE, SimpleFluidContent.EMPTY)));
+            .component(CBDataComponents.FLUID_STORAGE, SimpleFluidContent.EMPTY)
+            .stacksTo(1)));
     public static final DeferredItem<ShrinkinatorItem> SHRINKINATOR = ITEMS.register("shrinkinator", () -> new ShrinkinatorItem(new Item.Properties()
             .stacksTo(1)
             .rarity(Rarity.RARE)
@@ -52,6 +51,7 @@ public final class CBItems {
                     .component(CBDataComponents.ENERGY_STORAGE, 0)));
     public static final DeferredItem<BlockItem> SMILEY_CLOUD_ITEM = ITEMS.registerSimpleBlockItem("smiley_cloud", CBBlocks.SMILEY_CLOUD);
     public static final DeferredItem<Item> FIRE_IN_A_BOTTLE = ITEMS.register("fire_in_a_bottle", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> BEAN_CRYSTAL = ITEMS.register("bean_crystal", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BEAN = ITEMS.register("bean", () -> new BeanItem(CBBlocks.BEANS.get(), new Item.Properties()
             .food(new FoodProperties.Builder()
                     .alwaysEdible()

@@ -1,7 +1,10 @@
 package com.leclowndu93150.carbort;
 
+import com.leclowndu93150.carbort.client.hud.BeanScoreOverlay;
+import com.leclowndu93150.carbort.client.models.BeanEntityModel;
 import com.leclowndu93150.carbort.client.models.BedrockDrillHeadModel;
 import com.leclowndu93150.carbort.client.renderer.blockentities.BedrockDrillBER;
+import com.leclowndu93150.carbort.client.renderer.entities.BeanEntityRenderer;
 import com.leclowndu93150.carbort.client.screen.ChunkAnalyzerScreen;
 import com.leclowndu93150.carbort.registries.CBBlockEntities;
 import com.leclowndu93150.carbort.data.CBDataComponents;
@@ -20,16 +23,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.ModelEvent;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.client.event.*;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import org.jetbrains.annotations.NotNull;
@@ -38,18 +41,21 @@ import org.jetbrains.annotations.NotNull;
 public final class CarbortClient {
     public static final String MODID = "carbort";
 
-    public CarbortClient(IEventBus modEventBus) {
-        modEventBus.addListener(this::registerBakedModels);
+    public CarbortClient(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::registerBERs);
         modEventBus.addListener(this::registerMenuScreens);
         modEventBus.addListener(this::registerItemColorHandlers);
         modEventBus.addListener(this::registerClientExtensions);
         modEventBus.addListener(this::registerModels);
         modEventBus.addListener(this::onClientSetup);
+        modEventBus.addListener(this::registerOverlays);
+
+        modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
     private void registerBERs(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(CBBlockEntities.BEDROCK_DRILL.get(), BedrockDrillBER::new);
+        event.registerEntityRenderer(CBEntityTypes.BEAN.get(), BeanEntityRenderer::new);
     }
 
     private void onClientSetup(FMLClientSetupEvent event) {
@@ -96,11 +102,12 @@ public final class CarbortClient {
         }, CBItems.BEDROCKIUM_BLADE);
     }
 
-    private void registerBakedModels(ModelEvent.RegisterAdditional event) {
-        event.register(ModelResourceLocation.standalone(ResourceLocation.fromNamespaceAndPath(MODID, "block/bedrock_drill_head")));
-    }
-
     private void registerModels(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(BedrockDrillHeadModel.LAYER_LOCATION, BedrockDrillHeadModel::createBodyLayer);
+        event.registerLayerDefinition(BeanEntityModel.LAYER_LOCATION, BeanEntityModel::createBodyLayer);
+    }
+
+    private void registerOverlays(RegisterGuiLayersEvent event) {
+        event.registerAboveAll(Carbort.rl("bean_score"), BeanScoreOverlay.OVERLAY);
     }
 }

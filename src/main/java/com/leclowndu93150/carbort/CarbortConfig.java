@@ -32,10 +32,15 @@ public final class CarbortConfig {
             .comment("Chance for the watering can to increase crop growth. Chance in percent")
             .defineInRange("watering_can_chance", 60, 0, 100);
 
+    private static final ModConfigSpec.IntValue MAX_BEAN_SCORE = BUILDER
+            .comment("The maximum bean score a player can have.")
+            .defineInRange("max_bean_score", 100, 0, Integer.MAX_VALUE);
+
     public static ModConfigSpec SPEC;
 
     public static int bedrockDrillMaxProgress;
     public static int wateringCanChance;
+    public static int maxBeanScore;
 
     @SubscribeEvent
     public static void onLoad(final ModConfigEvent event) {
@@ -58,6 +63,7 @@ public final class CarbortConfig {
 
         bedrockDrillMaxProgress = BEDROCK_DRILL_MAX_PROGRESS.get();
         wateringCanChance = WATERING_CAN_CHANCE.get();
+        maxBeanScore = MAX_BEAN_SCORE.getAsInt();
     }
 
     public static int itemBlockEnergyUsage(ItemLike itemLike) {

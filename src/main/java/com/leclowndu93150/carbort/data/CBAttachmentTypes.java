@@ -15,4 +15,8 @@ public final class CBAttachmentTypes {
             .serialize(Codec.FLOAT)
             .copyOnDeath()
             .build());
+    public static final Supplier<AttachmentType<Integer>> BEAN_SCORE = ATTACHMENT_TYPES.register("bean_score", () -> AttachmentType.builder(() -> 0)
+            .serialize(Codec.INT)
+            .copyOnDeath()
+            .build());
 }

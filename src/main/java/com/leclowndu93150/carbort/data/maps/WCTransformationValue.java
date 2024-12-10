@@ -1,4 +1,4 @@
-package com.leclowndu93150.carbort.data.dataMaps;
+package com.leclowndu93150.carbort.data.maps;
 
 import com.leclowndu93150.carbort.utils.CodecUtils;
 import com.mojang.serialization.Codec;

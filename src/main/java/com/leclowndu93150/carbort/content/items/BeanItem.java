@@ -1,5 +1,8 @@
 package com.leclowndu93150.carbort.content.items;
 
+import com.leclowndu93150.carbort.Carbort;
+import com.leclowndu93150.carbort.data.CBAttachmentTypes;
+import com.leclowndu93150.carbort.registries.CBItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -31,8 +34,9 @@ public class BeanItem extends ItemNameBlockItem {
 
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+        RandomSource randomSource = livingEntity.getRandom();
         if (!level.isClientSide()) {
-            RandomSource randomSource = livingEntity.getRandom();
+            // EXPLOSION
             int chance = randomSource.nextInt(0, 2);
             if (chance == 0) {
                 BlockPos playerPos = livingEntity.getOnPos().above();
@@ -49,6 +53,11 @@ public class BeanItem extends ItemNameBlockItem {
                 );
             }
         }
+        //BEAN SCORE
+        int score = livingEntity.getData(CBAttachmentTypes.BEAN_SCORE);
+        Carbort.LOGGER.debug("score: {}", score);
+        livingEntity.setData(CBAttachmentTypes.BEAN_SCORE, score + randomSource.nextInt(4, 8));
+
         return super.finishUsingItem(stack, level, livingEntity);
     }
 }

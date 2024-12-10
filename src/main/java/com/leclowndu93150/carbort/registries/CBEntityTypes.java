@@ -1,6 +1,7 @@
 package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
+import com.leclowndu93150.carbort.content.entities.BeanEntity;
 import com.leclowndu93150.carbort.content.entities.DynamiteEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -15,4 +16,6 @@ public final class CBEntityTypes {
 
     public static final Supplier<EntityType<DynamiteEntity>> DYNAMITE = ENTITY_TYPES.register("dynamite",
             () -> EntityType.Builder.<DynamiteEntity>of(DynamiteEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("dynamite"));
+    public static final Supplier<EntityType<BeanEntity>> BEAN = ENTITY_TYPES.register("bean",
+            () -> EntityType.Builder.of(BeanEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("bean"));
 }

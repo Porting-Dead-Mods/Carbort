@@ -35,6 +35,7 @@ public class CBBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(CBBlocks.BEDROCK_DRILL.get());
+        dropSelf(CBBlocks.BEAN_BLOCK.get());
         bedrockOre(CBBlocks.BEDROCK_ORE.get(),
                 bedrockOreDrop(Items.RAW_COPPER, 0.33f),
                 bedrockOreDrop(Items.RAW_IRON,0.33f),

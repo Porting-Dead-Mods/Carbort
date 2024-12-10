@@ -1,6 +1,7 @@
 package com.leclowndu93150.carbort.datagen;
 
 import com.leclowndu93150.carbort.Carbort;
+import com.leclowndu93150.carbort.content.blocks.BeanBlock;
 import com.leclowndu93150.carbort.content.blocks.BedrockDrillBlock;
 import com.leclowndu93150.carbort.registries.CBBlocks;
 import net.minecraft.core.Direction;
@@ -25,14 +26,14 @@ public class CBBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         bedrockDrill(CBBlocks.BEDROCK_DRILL.get());
         simpleBlock(CBBlocks.BEDROCK_ORE.get(), models().cubeTop(name(CBBlocks.BEDROCK_ORE.get()), blockTexture(Blocks.BEDROCK), blockTexture(CBBlocks.BEDROCK_ORE.get())));
-
+        beanBlock(CBBlocks.BEAN_BLOCK.get());
     }
 
     private String name(Block block) {
         return this.key(block).getPath();
     }
 
-    public void bedrockDrill(Block block) {
+    private void bedrockDrill(Block block) {
         ModelFile.ExistingModelFile model = models().getExistingFile(existingModelFile(block));
         ModelFile activeModel = models().withExistingParent(name(block)+"_active", Carbort.rl("block/bedrock_drill"))
                 .texture("0", Carbort.rl("block/bedrock_drill_active"));
@@ -46,6 +47,17 @@ public class CBBlockStateProvider extends BlockStateProvider {
                     .modelForState().modelFile(model).rotationY(((int) dir.toYRot() + 180) % 360).addModel();
         }
 
+    }
+
+    private void beanBlock(Block block) {
+        ModelFile modelStage0 = cubeAll(block);
+        ModelFile modelStage1 = models().getExistingFile(extend(existingModelFile(block), "_1"));
+        ModelFile modelStage2 = models().getExistingFile(extend(existingModelFile(block), "_2"));
+
+        getVariantBuilder(block)
+                .partialState().with(BeanBlock.STAGE, 0).modelForState().modelFile(modelStage0).addModel()
+                .partialState().with(BeanBlock.STAGE, 1).modelForState().modelFile(modelStage1).addModel()
+                .partialState().with(BeanBlock.STAGE, 2).modelForState().modelFile(modelStage2).addModel();
     }
 
     public void existingFacingBlock(Block block) {
@@ -71,4 +83,11 @@ public class CBBlockStateProvider extends BlockStateProvider {
             return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + name.getPath() + suffix);
         return ResourceLocation.fromNamespaceAndPath(name.getNamespace(), ModelProvider.BLOCK_FOLDER + "/" + textureFolder + "/" + name.getPath() + suffix);
     }
+
+    private ResourceLocation extend(ResourceLocation rl, String suffix) {
+        String var10000 = rl.getNamespace();
+        String var10001 = rl.getPath();
+        return ResourceLocation.fromNamespaceAndPath(var10000, var10001 + suffix);
+    }
+
 }

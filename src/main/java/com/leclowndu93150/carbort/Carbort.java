@@ -4,6 +4,7 @@ import com.leclowndu93150.carbort.api.blockentities.ContainerBlockEntity;
 import com.leclowndu93150.carbort.api.items.IEnergyItem;
 import com.leclowndu93150.carbort.api.items.IFluidItem;
 import com.leclowndu93150.carbort.capabilties.ItemStackEnergyStorage;
+import com.leclowndu93150.carbort.content.entities.BeanEntity;
 import com.leclowndu93150.carbort.data.CBAttachmentTypes;
 import com.leclowndu93150.carbort.data.CBDataComponents;
 import com.leclowndu93150.carbort.data.CBDataMaps;
@@ -13,6 +14,8 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -23,6 +26,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStackSimple;
@@ -55,8 +59,17 @@ public final class Carbort {
         modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(this::registerPayloads);
         modEventBus.addListener(this::registerDataMaps);
+        modEventBus.addListener(this::registerEntityAttributes);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, CarbortConfig.SPEC);
+    }
+
+    private void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        event.put(CBEntityTypes.BEAN.get(), BeanEntity.createMobAttributes()
+                .add(Attributes.MAX_HEALTH)
+                .add(Attributes.MOVEMENT_SPEED)
+                .add(Attributes.ATTACK_DAMAGE)
+                .build());
     }
 
     private void registerDataMaps(RegisterDataMapTypesEvent event) {

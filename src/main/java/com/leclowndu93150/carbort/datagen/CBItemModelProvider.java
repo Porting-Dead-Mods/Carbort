@@ -15,7 +15,6 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -38,6 +37,7 @@ public class CBItemModelProvider extends ItemModelProvider {
         basicItem(CBItems.BEDROCKIUM_DUST);
         basicItem(CBItems.DEEPSTEAL_INGOT);
         basicItem(CBItems.DYNAMITE);
+        basicItem(CBItems.BEAN_CRYSTAL);
 
         handHeldItem(CBItems.BEAN_WAND);
         handHeldItem(CBItems.FUNERAL_PICKAXE);
