@@ -24,6 +24,7 @@ public final class CBTabs {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> PARTY_PICKAXE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
+                output.accept(CBBlocks.ANGEL_BLOCK_ITEM);
                 for (DeferredHolder<Item, ? extends Item> item : ITEMS.getEntries()) {
                     output.accept(item.get());
 
