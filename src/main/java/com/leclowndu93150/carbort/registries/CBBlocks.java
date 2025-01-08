@@ -2,6 +2,7 @@ package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.content.blocks.*;
+import com.leclowndu93150.carbort.content.items.AngelBlockItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -37,6 +38,8 @@ public final class CBBlocks {
             BeanCrystalBlock::new, BlockBehaviour.Properties.of());
     public static final DeferredBlock<ReinforcedPedestalBlock> REINFORCED_PEDESTAL = registerBlockAndItem("reinforced_pedestal",
             ReinforcedPedestalBlock::new, BlockBehaviour.Properties.of());
+    public static final DeferredBlock<AngelBlock> ANGEL_BLOCK = BLOCKS.registerBlock("angel_block", AngelBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
+    public static final DeferredItem<BlockItem> ANGEL_BLOCK_ITEM = CBItems.ITEMS.registerItem("angel_block", AngelBlockItem::new);
     public static final DeferredBlock<BeanCropBlock> BEANS = BLOCKS.register("beans",
             () -> new BeanCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
     public static final DeferredBlock<Block> BEDROCK_ORE = registerBlockAndItem("bedrock_ore",

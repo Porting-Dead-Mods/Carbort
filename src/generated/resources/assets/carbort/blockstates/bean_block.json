@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "carbort:block/bean_block"
+    },
+    "stage=1": {
+      "model": "carbort:block/bean_block_1"
+    },
+    "stage=2": {
+      "model": "carbort:block/bean_block_2"
+    }
+  }
+}

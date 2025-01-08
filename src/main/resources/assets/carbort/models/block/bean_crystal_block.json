@@ -1,0 +1,32 @@
+{
+	"parent": "minecraft:block/block",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "carbort:block/reinforced_bean_block",
+		"1": "carbort:block/reinforced_bean_block_top",
+		"particle": "carbort:block/reinforced_bean_block"
+	},
+	"elements": [
+		{
+			"from": [4, 0, 4],
+			"to": [12, 14, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 0, 7]},
+			"faces": {
+				"north": {"uv": [4, 1, 12, 15], "texture": "#0"},
+				"east": {"uv": [4, 1, 12, 15], "texture": "#0"},
+				"south": {"uv": [4, 1, 12, 15], "texture": "#0"},
+				"west": {"uv": [4, 1, 12, 15], "texture": "#0"},
+				"up": {"uv": [4, 4, 12, 12], "texture": "#1"},
+				"down": {"uv": [0, 3, 8, 11], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}
