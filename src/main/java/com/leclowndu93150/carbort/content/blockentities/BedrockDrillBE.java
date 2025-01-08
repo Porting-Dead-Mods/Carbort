@@ -1,12 +1,12 @@
 package com.leclowndu93150.carbort.content.blockentities;
 
 import com.leclowndu93150.carbort.CarbortConfig;
-import com.leclowndu93150.carbort.api.blockentities.ContainerBlockEntity;
-import com.leclowndu93150.carbort.api.capabilities.IOActions;
 import com.leclowndu93150.carbort.content.blocks.BedrockDrillBlock;
 import com.leclowndu93150.carbort.registries.CBBlockEntities;
 import com.leclowndu93150.carbort.registries.CBTags;
 import com.leclowndu93150.carbort.utils.ClientUtils;
+import com.portingdeadmods.portingdeadlibs.api.blockentities.ContainerBlockEntity;
+import com.portingdeadmods.portingdeadlibs.api.utils.IOAction;
 import it.unimi.dsi.fastutil.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,15 +15,21 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.energy.IEnergyStorage;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
+
+import static com.portingdeadmods.portingdeadlibs.utils.capabilities.SidedCapUtils.allExtract;
+import static com.portingdeadmods.portingdeadlibs.utils.capabilities.SidedCapUtils.allInsert;
 
 public class BedrockDrillBE extends ContainerBlockEntity {
     public static final int MAX_PROGRESS = 200;
@@ -43,9 +49,12 @@ public class BedrockDrillBE extends ContainerBlockEntity {
         this.active = blockState.getValue(BedrockDrillBlock.ACTIVE);
     }
 
-    @Override
     public int getEnergyUsage() {
-        return CarbortConfig.itemBlockEnergyUsage(this.asBlock());
+        return CarbortConfig.itemBlockEnergyUsage(asBlock());
+    }
+
+    private @NotNull Block asBlock() {
+        return this.getBlockState().getBlock();
     }
 
     @Override
@@ -83,6 +92,15 @@ public class BedrockDrillBE extends ContainerBlockEntity {
         }
     }
 
+    protected boolean useEnergy() {
+        IEnergyStorage energyStorage = getEnergyStorage();
+        if (energyStorage.extractEnergy(getEnergyUsage(), true) == getEnergyUsage()) {
+            energyStorage.extractEnergy(getEnergyUsage(), false);
+            return true;
+        }
+        return false;
+    }
+
     private float getSpeed() {
         return speed;
     }
@@ -100,7 +118,7 @@ public class BedrockDrillBE extends ContainerBlockEntity {
     }
 
     @Override
-    public <T> Map<Direction, Pair<IOActions, int[]>> getSidedInteractions(BlockCapability<T, @Nullable Direction> capability) {
+    public <T> Map<Direction, Pair<IOAction, int[]>> getSidedInteractions(BlockCapability<T, @Nullable Direction> capability) {
         if (capability == Capabilities.ItemHandler.BLOCK) {
             return allExtract(0, 1, 2, 3, 4, 5, 6, 7, 8);
         } else if (capability == Capabilities.EnergyStorage.BLOCK || capability == Capabilities.FluidHandler.BLOCK) {

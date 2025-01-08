@@ -38,8 +38,13 @@ public class ChunkVacuumItem extends SimpleEnergyItem {
     }
 
     @Override
-    public int getCapacity() {
+    public int getEnergyCapacity() {
         return CarbortConfig.itemBlockEnergyCapacity(this);
+    }
+
+    @Override
+    public int getMaxTransfer() {
+        return 100;
     }
 
     @Override

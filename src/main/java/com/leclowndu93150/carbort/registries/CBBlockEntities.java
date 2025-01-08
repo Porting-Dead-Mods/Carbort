@@ -2,6 +2,7 @@ package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.content.blockentities.BedrockDrillBE;
+import com.leclowndu93150.carbort.content.blockentities.ReinforcedPedestalBE;
 import com.leclowndu93150.carbort.content.blockentities.SmileyCloudBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -16,4 +17,6 @@ public final class CBBlockEntities {
             () -> BlockEntityType.Builder.of(SmileyCloudBlockEntity::new, CBBlocks.SMILEY_CLOUD.get()).build(null));
     public static final Supplier<BlockEntityType<BedrockDrillBE>> BEDROCK_DRILL = REGISTER.register("bedrock_drill",
             () -> BlockEntityType.Builder.of(BedrockDrillBE::new, CBBlocks.BEDROCK_DRILL.get()).build(null));
+    public static final Supplier<BlockEntityType<ReinforcedPedestalBE>> REINFORCED_PEDESTAL = REGISTER.register("reinforced_pedestal",
+            () -> BlockEntityType.Builder.of(ReinforcedPedestalBE::new, CBBlocks.REINFORCED_PEDESTAL.get()).build(null));
 }

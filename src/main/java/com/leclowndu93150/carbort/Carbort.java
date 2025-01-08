@@ -1,9 +1,5 @@
 package com.leclowndu93150.carbort;
 
-import com.leclowndu93150.carbort.api.blockentities.ContainerBlockEntity;
-import com.leclowndu93150.carbort.api.items.IEnergyItem;
-import com.leclowndu93150.carbort.api.items.IFluidItem;
-import com.leclowndu93150.carbort.capabilties.ItemStackEnergyStorage;
 import com.leclowndu93150.carbort.content.entities.BeanEntity;
 import com.leclowndu93150.carbort.data.CBAttachmentTypes;
 import com.leclowndu93150.carbort.data.CBDataComponents;
@@ -11,29 +7,18 @@ import com.leclowndu93150.carbort.data.CBDataMaps;
 import com.leclowndu93150.carbort.networking.*;
 import com.leclowndu93150.carbort.registries.*;
 import com.mojang.logging.LogUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStack;
-import net.neoforged.neoforge.fluids.capability.templates.FluidHandlerItemStackSimple;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
+import com.portingdeadmods.portingdeadlibs.utils.capabilities.CapabilityRegistrationHelper;
 import org.slf4j.Logger;
 
 @Mod(Carbort.MODID)
@@ -76,41 +61,9 @@ public final class Carbort {
         event.register(CBDataMaps.WATERING_CAN_TRANSFORMATION);
     }
 
-    @SuppressWarnings("unchecked")
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
-        for (DeferredHolder<Item, ? extends Item> item : CBItems.ITEMS.getEntries()) {
-            if (item.get() instanceof IEnergyItem energyItem) {
-                event.registerItem(Capabilities.EnergyStorage.ITEM,
-                        (itemStack, ctx) -> new ItemStackEnergyStorage(energyItem.getCapacity(), itemStack), item.get());
-            }
-            if (item.get() instanceof IFluidItem fluidItem) {
-                event.registerItem(Capabilities.FluidHandler.ITEM,
-                        (itemStack, ctx) -> new FluidHandlerItemStack(CBDataComponents.FLUID_STORAGE, itemStack, fluidItem.getCapacity()) {
-                            @Override
-                            public boolean canFillFluidType(FluidStack fluid) {
-                                return fluidItem.isFluidValid(itemStack, fluid);
-                            }
-                        }, item.get());
-            }
-        }
-
-        for (DeferredHolder<BlockEntityType<?>, ? extends BlockEntityType<?>> be : CBBlockEntities.REGISTER.getEntries()) {
-            Block validBlock = be.get().getValidBlocks().stream().iterator().next();
-            BlockEntity testBE = be.get().create(BlockPos.ZERO, validBlock.defaultBlockState());
-            if (testBE instanceof ContainerBlockEntity containerBE) {
-                if (containerBE.getEnergyStorage() != null) {
-                    event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, (BlockEntityType<ContainerBlockEntity>) be.get(), ContainerBlockEntity::getEnergyStorageOnSide);
-                }
-
-                if (containerBE.getItemHandler() != null) {
-                    event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, (BlockEntityType<ContainerBlockEntity>) be.get(), ContainerBlockEntity::getItemHandlerOnSide);
-                }
-
-                if (containerBE.getFluidHandler() != null) {
-                    event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, (BlockEntityType<ContainerBlockEntity>) be.get(), ContainerBlockEntity::getFluidHandlerOnSide);
-                }
-            }
-        }
+        CapabilityRegistrationHelper.registerItemCaps(event, CBItems.ITEMS);
+        CapabilityRegistrationHelper.registerBECaps(event, CBBlockEntities.REGISTER);
     }
 
     private void registerPayloads(RegisterPayloadHandlersEvent event) {

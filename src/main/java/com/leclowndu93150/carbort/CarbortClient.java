@@ -4,8 +4,10 @@ import com.leclowndu93150.carbort.client.hud.BeanScoreOverlay;
 import com.leclowndu93150.carbort.client.models.BeanEntityModel;
 import com.leclowndu93150.carbort.client.models.BedrockDrillHeadModel;
 import com.leclowndu93150.carbort.client.renderer.blockentities.BedrockDrillBER;
+import com.leclowndu93150.carbort.client.renderer.blockentities.ReinforcedPedestalBER;
 import com.leclowndu93150.carbort.client.renderer.entities.BeanEntityRenderer;
 import com.leclowndu93150.carbort.client.screen.ChunkAnalyzerScreen;
+import com.leclowndu93150.carbort.content.blockentities.ReinforcedPedestalBE;
 import com.leclowndu93150.carbort.registries.CBBlockEntities;
 import com.leclowndu93150.carbort.data.CBDataComponents;
 import com.leclowndu93150.carbort.registries.CBEntityTypes;
@@ -55,6 +57,7 @@ public final class CarbortClient {
 
     private void registerBERs(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(CBBlockEntities.BEDROCK_DRILL.get(), BedrockDrillBER::new);
+        event.registerBlockEntityRenderer(CBBlockEntities.REINFORCED_PEDESTAL.get(), ReinforcedPedestalBER::new);
         event.registerEntityRenderer(CBEntityTypes.BEAN.get(), BeanEntityRenderer::new);
     }
 

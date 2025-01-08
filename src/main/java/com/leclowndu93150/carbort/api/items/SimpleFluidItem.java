@@ -1,6 +1,7 @@
 package com.leclowndu93150.carbort.api.items;
 
 import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import com.portingdeadmods.portingdeadlibs.api.items.IFluidItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -22,7 +23,7 @@ public abstract class SimpleFluidItem extends Item implements IFluidItem {
 
     @Override
     public boolean isBarVisible(ItemStack stack) {
-        return getCapacity() > 0;
+        return getFluidCapacity() > 0;
     }
 
     @Override

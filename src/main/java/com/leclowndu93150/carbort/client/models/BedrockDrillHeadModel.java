@@ -14,7 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 
 public class BedrockDrillHeadModel extends Model {
-    public static final Material CRUCIBLE_LOCATION = new Material(
+    public static final Material MATERIAL = new Material(
             InventoryMenu.BLOCK_ATLAS, ResourceLocation.fromNamespaceAndPath(Carbort.MODID, "entity/bedrock_drill_head")
     );
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Carbort.MODID, "bedrock_drill_head"), "main");

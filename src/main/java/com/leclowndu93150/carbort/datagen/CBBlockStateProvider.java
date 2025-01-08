@@ -27,6 +27,12 @@ public class CBBlockStateProvider extends BlockStateProvider {
         bedrockDrill(CBBlocks.BEDROCK_DRILL.get());
         simpleBlock(CBBlocks.BEDROCK_ORE.get(), models().cubeTop(name(CBBlocks.BEDROCK_ORE.get()), blockTexture(Blocks.BEDROCK), blockTexture(CBBlocks.BEDROCK_ORE.get())));
         beanBlock(CBBlocks.BEAN_BLOCK.get());
+        existingBlock(CBBlocks.BEAN_CRYSTAL_BLOCK.get());
+        existingBlock(CBBlocks.REINFORCED_PEDESTAL.get());
+    }
+
+    private void existingBlock(Block block) {
+        simpleBlock(block, models().getExistingFile(existingModelFile(block)));
     }
 
     private String name(Block block) {

@@ -1,9 +1,9 @@
 package com.leclowndu93150.carbort.content.items;
 
 import com.leclowndu93150.carbort.CarbortConfig;
-import com.leclowndu93150.carbort.api.items.IFluidItem;
 import com.leclowndu93150.carbort.data.CBDataComponents;
 import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import com.portingdeadmods.portingdeadlibs.api.items.IFluidItem;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.InteractionHand;
@@ -22,11 +22,6 @@ public class FuneralPickaxeItem extends PickaxeItem implements IFluidItem {
     }
 
     @Override
-    public int getCapacity() {
-        return CarbortConfig.itemFluidCapacity(this);
-    }
-
-    @Override
     public boolean isBarVisible(ItemStack stack) {
         return true;
     }
@@ -42,7 +37,6 @@ public class FuneralPickaxeItem extends PickaxeItem implements IFluidItem {
         return Math.round(13.0F - ((1 - ((float) energyStorage.getFluidInTank(0).getAmount() / energyStorage.getTankCapacity(0))) * 13.0F));
     }
 
-    @Override
     public boolean isFluidValid(ItemStack itemStack, FluidStack fluid) {
         // TODO: VOid fluid
         return fluid.is(Tags.Fluids.LAVA);
@@ -62,5 +56,10 @@ public class FuneralPickaxeItem extends PickaxeItem implements IFluidItem {
     @Override
     public boolean isFoil(ItemStack stack) {
         return super.isFoil(stack) || stack.getOrDefault(CBDataComponents.ACTIVE, false);
+    }
+
+    @Override
+    public int getFluidCapacity() {
+        return CarbortConfig.itemFluidCapacity(this);
     }
 }

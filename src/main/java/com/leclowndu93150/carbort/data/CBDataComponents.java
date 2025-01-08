@@ -15,11 +15,6 @@ import java.util.function.UnaryOperator;
 public final class CBDataComponents {
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.create(BuiltInRegistries.DATA_COMPONENT_TYPE, Carbort.MODID);
 
-    public static final Supplier<DataComponentType<Integer>> ENERGY_STORAGE = DATA_COMPONENTS.register("energy",
-            () -> DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());
-    public static final Supplier<DataComponentType<SimpleFluidContent>> FLUID_STORAGE = DATA_COMPONENTS.register("fluid",
-            () -> DataComponentType.<SimpleFluidContent>builder().persistent(SimpleFluidContent.CODEC).networkSynchronized(SimpleFluidContent.STREAM_CODEC).build());
-
     // UNSTABLE INGOT
     public static final Supplier<DataComponentType<Integer>> TIMER = DATA_COMPONENTS.register("timer",
             () -> DataComponentType.<Integer>builder().persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT).build());

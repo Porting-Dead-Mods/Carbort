@@ -1,9 +1,8 @@
 package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
-import com.leclowndu93150.carbort.CarbortConfig;
-import com.leclowndu93150.carbort.api.items.IEnergyItem;
 import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import com.portingdeadmods.portingdeadlibs.api.items.IEnergyItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -28,7 +27,7 @@ public final class CBTabs {
                     output.accept(item.get());
 
                     if (item.get() instanceof IEnergyItem energyItem) {
-                        if (energyItem.getCapacity() > 0) {
+                        if (energyItem.getEnergyCapacity() > 0) {
                             addEnergyItem(output, item.get());
                         }
                     }

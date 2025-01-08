@@ -2,7 +2,6 @@ package com.leclowndu93150.carbort.client.renderer.blockentities;
 
 import com.leclowndu93150.carbort.client.models.BedrockDrillHeadModel;
 import com.leclowndu93150.carbort.content.blockentities.BedrockDrillBE;
-import com.leclowndu93150.carbort.content.blocks.BedrockDrillBlock;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -29,7 +28,7 @@ public class BedrockDrillBER implements BlockEntityRenderer<BedrockDrillBE> {
             poseStack.mulPose(Axis.XP.rotationDegrees(180));
             poseStack.translate(-0.5, 0, -0.5);
             poseStack.translate(0.5, -0.375, 0.5);
-            this.model.renderToBuffer(poseStack, BedrockDrillHeadModel.CRUCIBLE_LOCATION.buffer(bufferSource, RenderType::entitySolid), packedLight, packedOverlay);
+            this.model.renderToBuffer(poseStack, BedrockDrillHeadModel.MATERIAL.buffer(bufferSource, RenderType::entitySolid), packedLight, packedOverlay);
         }
         poseStack.popPose();
     }

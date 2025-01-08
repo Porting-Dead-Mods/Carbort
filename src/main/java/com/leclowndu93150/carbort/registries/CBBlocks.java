@@ -1,15 +1,14 @@
 package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
-import com.leclowndu93150.carbort.content.blocks.BeanBlock;
-import com.leclowndu93150.carbort.content.blocks.BeanCropBlock;
-import com.leclowndu93150.carbort.content.blocks.BedrockDrillBlock;
+import com.leclowndu93150.carbort.content.blocks.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -30,7 +29,14 @@ public final class CBBlocks {
     public static final DeferredBlock<BedrockDrillBlock> BEDROCK_DRILL = registerBlockAndItem("bedrock_drill",
             BedrockDrillBlock::new, BlockBehaviour.Properties.of());
     public static final DeferredBlock<BeanBlock> BEAN_BLOCK = registerBlockAndItem("bean_block",
-            BeanBlock::new, BlockBehaviour.Properties.of());
+            BeanBlock::new, BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_ORANGE)
+                    .strength(0.6F)
+                    .sound(SoundType.CORAL_BLOCK));
+    public static final DeferredBlock<BeanCrystalBlock> BEAN_CRYSTAL_BLOCK = registerBlockAndItem("bean_crystal_block",
+            BeanCrystalBlock::new, BlockBehaviour.Properties.of());
+    public static final DeferredBlock<ReinforcedPedestalBlock> REINFORCED_PEDESTAL = registerBlockAndItem("reinforced_pedestal",
+            ReinforcedPedestalBlock::new, BlockBehaviour.Properties.of());
     public static final DeferredBlock<BeanCropBlock> BEANS = BLOCKS.register("beans",
             () -> new BeanCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
     public static final DeferredBlock<Block> BEDROCK_ORE = registerBlockAndItem("bedrock_ore",

@@ -30,8 +30,13 @@ public class ShrinkinatorItem extends SimpleEnergyItem implements ScrollableItem
     }
 
     @Override
-    public int getCapacity() {
+    public int getEnergyCapacity() {
         return CarbortConfig.itemBlockEnergyCapacity(this);
+    }
+
+    @Override
+    public int getMaxTransfer() {
+        return 100;
     }
 
     @Override

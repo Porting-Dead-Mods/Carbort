@@ -1,6 +1,7 @@
 package com.leclowndu93150.carbort.api.items;
 
 import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import com.portingdeadmods.portingdeadlibs.api.items.IEnergyItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FastColor;
@@ -21,7 +22,7 @@ public abstract class SimpleEnergyItem extends Item implements IEnergyItem {
 
     @Override
     public boolean isBarVisible(ItemStack stack) {
-        return getCapacity() > 0;
+        return getEnergyCapacity() > 0;
     }
 
     @Override

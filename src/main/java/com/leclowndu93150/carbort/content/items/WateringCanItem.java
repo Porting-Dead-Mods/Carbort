@@ -29,7 +29,7 @@ public class WateringCanItem extends SimpleFluidItem {
     }
 
     @Override
-    public int getCapacity() {
+    public int getFluidCapacity() {
         return CarbortConfig.itemFluidCapacity(this);
     }
 
