@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "tag": "c:feathers"
+    },
+    "G": {
+      "tag": "c:nuggets/gold"
+    }
+  },
+  "pattern": [
+    "FFF",
+    "FGF",
+    "FFF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:angel_block"
+  }
+}

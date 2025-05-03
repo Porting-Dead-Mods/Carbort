@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "tag": "c:buckets/empty"
+    },
+    "C": {
+      "tag": "c:ingots/copper"
+    }
+  },
+  "pattern": [
+    "CBC",
+    " CC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:watering_can"
+  }
+}

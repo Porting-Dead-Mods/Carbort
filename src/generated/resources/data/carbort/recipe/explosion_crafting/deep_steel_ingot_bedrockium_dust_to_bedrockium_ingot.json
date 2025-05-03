@@ -1,0 +1,16 @@
+{
+  "type": "carbort:explosion_crafting",
+  "ingredients": [
+    {
+      "item": "carbort:deep_steel_ingot"
+    },
+    {
+      "count": 8,
+      "item": "carbort:bedrockium_dust"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:bedrockium_ingot"
+  }
+}

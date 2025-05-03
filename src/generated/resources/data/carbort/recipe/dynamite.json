@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:gunpowders"
+    },
+    "R": {
+      "tag": "c:dyes/red"
+    },
+    "S": {
+      "tag": "c:strings"
+    }
+  },
+  "pattern": [
+    "S",
+    "G",
+    "R"
+  ],
+  "result": {
+    "count": 3,
+    "id": "carbort:dynamite"
+  }
+}

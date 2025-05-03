@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "carbort:item/deep_steel_ingot"
+  }
+}

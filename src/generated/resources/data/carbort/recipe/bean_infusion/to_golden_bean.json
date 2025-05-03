@@ -1,0 +1,15 @@
+{
+  "type": "carbort:bean_infusion",
+  "bean_level": 100,
+  "ingredients": [
+    {
+      "tag": "c:ingots/gold"
+    }
+  ],
+  "main_ingredient": {
+    "item": "carbort:bean"
+  },
+  "result": {
+    "id": "carbort:golden_bean"
+  }
+}

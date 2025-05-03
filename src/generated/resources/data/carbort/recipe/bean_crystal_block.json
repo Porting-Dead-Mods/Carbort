@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "carbort:bean_crystal"
+    },
+    "I": {
+      "tag": "c:storage_blocks/iron"
+    }
+  },
+  "pattern": [
+    "B",
+    "I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:bean_crystal_block"
+  }
+}

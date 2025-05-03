@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "carbort:bedrockium_ingot"
+    },
+    "D": {
+      "item": "carbort:deep_steel_ingot"
+    }
+  },
+  "pattern": [
+    "B",
+    "B",
+    "D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "carbort:bedrockium_blade"
+  }
+}
