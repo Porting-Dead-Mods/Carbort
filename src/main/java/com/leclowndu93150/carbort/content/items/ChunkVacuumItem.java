@@ -44,7 +44,7 @@ public class ChunkVacuumItem extends SimpleEnergyItem {
 
     @Override
     public int getMaxTransfer() {
-        return 100;
+        return 200;
     }
 
     @Override

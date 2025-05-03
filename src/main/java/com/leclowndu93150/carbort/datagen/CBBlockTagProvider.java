@@ -23,6 +23,7 @@ public class CBBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(CBTags.Blocks.BEDROCK_DRILL_MINEABLE, CBBlocks.BEDROCK_ORE.get());
+        tag(CBTags.Blocks.SHOW_BEAN_SCORE, CBBlocks.BEAN_CRYSTAL_BLOCK.get());
     }
 
     private void tag(TagKey<Block> blockTagKey, Block... blocks) {

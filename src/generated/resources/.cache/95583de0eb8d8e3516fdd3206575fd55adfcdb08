@@ -1,4 +1,5 @@
-// 1.21.1	2024-12-11T16:30:43.09754301	Item Models: carbort
+// 1.21.1	2025-03-09T12:14:44.997732706	Item Models: carbort
+0f1274cd4cb1bf688d30427597fa7e660bd48b3a assets/carbort/models/item/angel_block.json
 a45ed4013794544639dd8410330e73fcedbf41bb assets/carbort/models/item/bean.json
 3b65daba70d05c05b5329b97855897a73576f775 assets/carbort/models/item/bean_block.json
 f324a33eccb55e8210c576cbbf9b8335e56479bc assets/carbort/models/item/bean_crystal.json
@@ -9,10 +10,9 @@ e27a2190f9ca3a948914c463724a3ff37dcd5849 assets/carbort/models/item/bedrock_ore.
 5cef6d813869f284e6f456817c4995b940cbd3a2 assets/carbort/models/item/bedrockium_dust.json
 0afd690876654ab329015c02e029fd9e764a7d89 assets/carbort/models/item/bedrockium_ingot.json
 44943658365709a2625f083514959d2dcb0b08b0 assets/carbort/models/item/chunk_analyzer.json
-018d73fc2c24ef0f56835e5d7efc8752a10c9093 assets/carbort/models/item/deepsteal_ingot.json
+6d21f32ac0236293b82575722cd26680b4b4b559 assets/carbort/models/item/deep_steel_ingot.json
 e61a2481d9a2dc6d89c934921e2aab0cc3b35add assets/carbort/models/item/division_sigil.json
 64c8f627197dc5c3aeebfe29919935954b83599f assets/carbort/models/item/dynamite.json
-acdf847e559af9dac575d3705359fcae8fbb6525 assets/carbort/models/item/fire_in_a_bottle.json
 c97a8ac8cf5ac3483cbaa2a8de9303a5d2e35a50 assets/carbort/models/item/funeral_pickaxe.json
 3a5f2fcb47efbbc91cc4d4f65eb102a734282b73 assets/carbort/models/item/golden_bean.json
 358c0948d66ed43c14f61e749407b6c243557241 assets/carbort/models/item/healing_axe.json
@@ -20,4 +20,5 @@ c97a8ac8cf5ac3483cbaa2a8de9303a5d2e35a50 assets/carbort/models/item/funeral_pick
 6697ee2e328403a25944da5c23b5b35a6c67e768 assets/carbort/models/item/reinforced_pedestal.json
 74bd839641d7d336279c4cc7ce962bfe45bb07ee assets/carbort/models/item/shrinkinator.json
 71f9869185fe189e0c5846be05a987b5aaf9b788 assets/carbort/models/item/tormented_soul.json
+c212a78103131a1dfe0cd544055722e9243e1d27 assets/carbort/models/item/void_bucket.json
 c512d3474502fb2faf777194c03db636cd4babfe assets/carbort/models/item/watering_can.json

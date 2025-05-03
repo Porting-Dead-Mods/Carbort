@@ -1,9 +1,11 @@
-// 1.21.1	2024-12-11T16:30:43.092939727	Block States: carbort
+// 1.21.1	2025-02-25T20:00:52.92155939	Block States: carbort
+4d1238c276ef9c1e9e7eb7b36f4831fab91c416f assets/carbort/blockstates/angel_block.json
 355710af608d86a8f3d6565602443ae21f7040b0 assets/carbort/blockstates/bean_block.json
 e54d79165f8c0e94eb2aecb7a64cbe4aa47cb5b2 assets/carbort/blockstates/bean_crystal_block.json
 f0c9d28f520d83f2199d0bf28428a0a59213a25a assets/carbort/blockstates/bedrock_drill.json
 1a43f0b5aece3a31d727e79e359838dc9854a99f assets/carbort/blockstates/bedrock_ore.json
 46a3ff7dcf7dabe4f6e126b7b35a207e34665617 assets/carbort/blockstates/reinforced_pedestal.json
+c0f38bdd95c40c9eadac2e861b8f17ef7dccf6ab assets/carbort/models/block/angel_block.json
 50b9bf10df4d82621971088e82494359aa02b786 assets/carbort/models/block/bean_block.json
 599b041231d3cb85ed5b26befabd34e84c55ffbd assets/carbort/models/block/bedrock_drill_active.json
 aedb08ebe92ac5439660615ec552b057a25a6dc1 assets/carbort/models/block/bedrock_ore.json

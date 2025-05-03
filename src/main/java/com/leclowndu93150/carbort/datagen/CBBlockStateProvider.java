@@ -29,6 +29,7 @@ public class CBBlockStateProvider extends BlockStateProvider {
         beanBlock(CBBlocks.BEAN_BLOCK.get());
         existingBlock(CBBlocks.BEAN_CRYSTAL_BLOCK.get());
         existingBlock(CBBlocks.REINFORCED_PEDESTAL.get());
+        simpleBlock(CBBlocks.ANGEL_BLOCK.get());
     }
 
     private void existingBlock(Block block) {

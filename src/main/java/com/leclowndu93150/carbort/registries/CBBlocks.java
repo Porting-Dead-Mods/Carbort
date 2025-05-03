@@ -20,13 +20,13 @@ import java.util.function.Function;
 public final class CBBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Carbort.MODID);
 
-    public static final DeferredBlock<Block> SMILEY_CLOUD = BLOCKS.register(
-            "smiley_cloud",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .destroyTime(2.0f)
-                    .explosionResistance(10.0f)
-                    .sound(SoundType.WOOL)
-            ));
+//    public static final DeferredBlock<Block> SMILEY_CLOUD = BLOCKS.register(
+//            "smiley_cloud",
+//            () -> new Block(BlockBehaviour.Properties.of()
+//                    .destroyTime(2.0f)
+//                    .explosionResistance(10.0f)
+//                    .sound(SoundType.WOOL)
+//            ));
     public static final DeferredBlock<BedrockDrillBlock> BEDROCK_DRILL = registerBlockAndItem("bedrock_drill",
             BedrockDrillBlock::new, BlockBehaviour.Properties.of());
     public static final DeferredBlock<BeanBlock> BEAN_BLOCK = registerBlockAndItem("bean_block",
@@ -38,7 +38,7 @@ public final class CBBlocks {
             BeanCrystalBlock::new, BlockBehaviour.Properties.of());
     public static final DeferredBlock<ReinforcedPedestalBlock> REINFORCED_PEDESTAL = registerBlockAndItem("reinforced_pedestal",
             ReinforcedPedestalBlock::new, BlockBehaviour.Properties.of());
-    public static final DeferredBlock<AngelBlock> ANGEL_BLOCK = BLOCKS.registerBlock("angel_block", AngelBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK));
+    public static final DeferredBlock<AngelBlock> ANGEL_BLOCK = BLOCKS.registerBlock("angel_block", AngelBlock::new, BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL));
     public static final DeferredItem<BlockItem> ANGEL_BLOCK_ITEM = CBItems.ITEMS.registerItem("angel_block", AngelBlockItem::new);
     public static final DeferredBlock<BeanCropBlock> BEANS = BLOCKS.register("beans",
             () -> new BeanCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CARROTS)));
@@ -64,5 +64,9 @@ public final class CBBlocks {
         DeferredItem<BlockItem> blockItem = CBItems.ITEMS.registerItem(name, props -> blockItemConstructor.apply(block.get(), props), new Item.Properties());
         CBItems.BLOCK_ITEMS.add(blockItem);
         return block;
+    }
+
+    static {
+        CBItems.BLOCK_ITEMS.add(ANGEL_BLOCK_ITEM);
     }
 }

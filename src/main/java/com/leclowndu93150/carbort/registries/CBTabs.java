@@ -2,6 +2,7 @@ package com.leclowndu93150.carbort.registries;
 
 import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.utils.CapabilityUtils;
+import com.portingdeadmods.portingdeadlibs.api.data.PDLDataComponents;
 import com.portingdeadmods.portingdeadlibs.api.items.IEnergyItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -38,7 +39,7 @@ public final class CBTabs {
     private static void addEnergyItem(CreativeModeTab.Output output, Item item) {
         ItemStack itemStack = new ItemStack(item);
         IEnergyStorage energyStorage = CapabilityUtils.itemEnergyStorage(itemStack);
-        energyStorage.receiveEnergy(energyStorage.getMaxEnergyStored(), false);
+        itemStack.set(PDLDataComponents.ENERGY, energyStorage.getMaxEnergyStored());
         output.accept(itemStack);
     }
 }

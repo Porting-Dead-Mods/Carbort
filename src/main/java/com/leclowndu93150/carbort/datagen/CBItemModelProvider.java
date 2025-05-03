@@ -1,13 +1,16 @@
 package com.leclowndu93150.carbort.datagen;
 
 import com.leclowndu93150.carbort.Carbort;
+import com.leclowndu93150.carbort.registries.CBFluids;
 import com.leclowndu93150.carbort.registries.CBItems;
+import com.portingdeadmods.portingdeadlibs.api.fluids.PDLFluid;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -31,11 +34,10 @@ public class CBItemModelProvider extends ItemModelProvider {
         basicItem(CBItems.CHUNK_ANALYZER);
         basicItem(CBItems.TORMENTED_SOUL);
         basicItem(CBItems.GOLDEN_BEAN);
-        basicItem(CBItems.FIRE_IN_A_BOTTLE);
         basicItem(CBItems.DIVISION_SIGIL);
         basicItem(CBItems.BEDROCKIUM_INGOT);
         basicItem(CBItems.BEDROCKIUM_DUST);
-        basicItem(CBItems.DEEPSTEAL_INGOT);
+        basicItem(CBItems.DEEP_STEEL_INGOT);
         basicItem(CBItems.DYNAMITE);
         basicItem(CBItems.BEAN_CRYSTAL);
 
@@ -47,6 +49,10 @@ public class CBItemModelProvider extends ItemModelProvider {
 
         wateringCanModel(CBItems.WATERING_CAN);
 
+        for (PDLFluid fluid : CBFluids.HELPER.getFluids()) {
+            bucket(fluid.getStillFluid());
+        }
+
         blockItems();
     }
 
@@ -54,6 +60,12 @@ public class CBItemModelProvider extends ItemModelProvider {
         for (Supplier<BlockItem> blockItem : CBItems.BLOCK_ITEMS) {
             parentItemBlock(blockItem.get());
         }
+    }
+
+    private void bucket(Fluid f) {
+        withExistingParent(key(f.getBucket()).getPath(), ResourceLocation.fromNamespaceAndPath("neoforge", "item/bucket_drip"))
+                .customLoader(DynamicFluidContainerModelBuilder::begin)
+                .fluid(f);
     }
 
     public ItemModelBuilder parentItemBlock(Item item, ResourceLocation loc) {

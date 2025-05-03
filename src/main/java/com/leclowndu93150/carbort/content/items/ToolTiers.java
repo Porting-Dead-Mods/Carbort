@@ -21,7 +21,7 @@ public final class ToolTiers {
             20f,
             4f,
             50,
-            () -> Ingredient.of(CBItems.DEEPSTEAL_INGOT)
+            () -> Ingredient.of(CBItems.DEEP_STEEL_INGOT)
     );
     public static final Tier BEDROCKIUM = new SimpleTier(
             Tags.Blocks.NEEDS_NETHERITE_TOOL,

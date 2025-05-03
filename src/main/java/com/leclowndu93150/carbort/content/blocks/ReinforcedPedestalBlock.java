@@ -5,6 +5,7 @@ import com.leclowndu93150.carbort.registries.CBBlockEntities;
 import com.mojang.serialization.MapCodec;
 import com.portingdeadmods.portingdeadlibs.api.blockentities.ContainerBlockEntity;
 import com.portingdeadmods.portingdeadlibs.api.blocks.ContainerBlock;
+import com.portingdeadmods.portingdeadlibs.api.blocks.RotatableContainerBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -24,7 +25,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 
 import java.util.stream.Stream;
 
-public class ReinforcedPedestalBlock extends ContainerBlock {
+public class ReinforcedPedestalBlock extends RotatableContainerBlock {
     public static final VoxelShape SHAPE = Stream.of(
             Block.box(10, 2, 7, 11, 4, 9),
             Block.box(5, 1, 5, 11, 5, 11),

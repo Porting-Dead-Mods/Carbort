@@ -13,6 +13,7 @@ import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.chunk.ChunkAccess;
 import org.jetbrains.annotations.NotNull;
 
 public class BeanItem extends ItemNameBlockItem {
@@ -35,11 +36,11 @@ public class BeanItem extends ItemNameBlockItem {
     @Override
     public @NotNull ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
         RandomSource randomSource = livingEntity.getRandom();
+        BlockPos playerPos = livingEntity.getOnPos().above();
         if (!level.isClientSide()) {
             // EXPLOSION
             int chance = randomSource.nextInt(0, 2);
             if (chance == 0) {
-                BlockPos playerPos = livingEntity.getOnPos().above();
                 level.explode(
                         null,
                         Explosion.getDefaultDamageSource(level, livingEntity),
@@ -53,10 +54,12 @@ public class BeanItem extends ItemNameBlockItem {
                 );
             }
         }
+
         //BEAN SCORE
-        int score = livingEntity.getData(CBAttachmentTypes.BEAN_SCORE);
+        ChunkAccess chunk = level.getChunk(playerPos);
+        int score = chunk.getData(CBAttachmentTypes.BEAN_SCORE);
         Carbort.LOGGER.debug("score: {}", score);
-        livingEntity.setData(CBAttachmentTypes.BEAN_SCORE, score + randomSource.nextInt(4, 8));
+        chunk.setData(CBAttachmentTypes.BEAN_SCORE, score + randomSource.nextInt(4, 8));
 
         return super.finishUsingItem(stack, level, livingEntity);
     }

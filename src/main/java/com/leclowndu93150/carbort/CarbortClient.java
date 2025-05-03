@@ -7,17 +7,12 @@ import com.leclowndu93150.carbort.client.renderer.blockentities.BedrockDrillBER;
 import com.leclowndu93150.carbort.client.renderer.blockentities.ReinforcedPedestalBER;
 import com.leclowndu93150.carbort.client.renderer.entities.BeanEntityRenderer;
 import com.leclowndu93150.carbort.client.screen.ChunkAnalyzerScreen;
-import com.leclowndu93150.carbort.content.blockentities.ReinforcedPedestalBE;
-import com.leclowndu93150.carbort.registries.CBBlockEntities;
+import com.leclowndu93150.carbort.registries.*;
 import com.leclowndu93150.carbort.data.CBDataComponents;
-import com.leclowndu93150.carbort.registries.CBEntityTypes;
-import com.leclowndu93150.carbort.registries.CBItems;
-import com.leclowndu93150.carbort.registries.CBMenus;
+import com.portingdeadmods.portingdeadlibs.api.fluids.PDLFluid;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,6 +30,7 @@ import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.neoforge.client.model.DynamicFluidContainerModel;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandlerItem;
 import org.jetbrains.annotations.NotNull;
@@ -94,6 +90,10 @@ public final class CarbortClient {
             }
             return 0xFFFFFFFF;
         }, CBItems.WATERING_CAN);
+
+        for (PDLFluid fluid : CBFluids.HELPER.getFluids()) {
+            event.register(new DynamicFluidContainerModel.Colors(), fluid.getBucket());
+        }
     }
 
     private void registerClientExtensions(RegisterClientExtensionsEvent event) {
@@ -111,6 +111,6 @@ public final class CarbortClient {
     }
 
     private void registerOverlays(RegisterGuiLayersEvent event) {
-        event.registerAboveAll(Carbort.rl("bean_score"), BeanScoreOverlay.OVERLAY);
+        event.registerAboveAll(Carbort.rl("bean_score"), BeanScoreOverlay.HUD_OVERLAY);
     }
 }

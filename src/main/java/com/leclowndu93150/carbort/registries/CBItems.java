@@ -50,8 +50,6 @@ public final class CBItems {
                     .stacksTo(1)
                     .rarity(Rarity.EPIC)
                     .component(PDLDataComponents.ENERGY, 0)));
-    public static final DeferredItem<BlockItem> SMILEY_CLOUD_ITEM = ITEMS.registerSimpleBlockItem("smiley_cloud", CBBlocks.SMILEY_CLOUD);
-    public static final DeferredItem<Item> FIRE_IN_A_BOTTLE = ITEMS.register("fire_in_a_bottle", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BEAN_CRYSTAL = ITEMS.register("bean_crystal", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BEAN = ITEMS.register("bean", () -> new BeanItem(CBBlocks.BEANS.get(), new Item.Properties()
             .food(new FoodProperties.Builder()
@@ -59,7 +57,7 @@ public final class CBItems {
                     .nutrition(6)
                     .saturationModifier(0.7F)
                     .build())));
-    public static final DeferredItem<Item> GOLDEN_BEAN = ITEMS.register("golden_bean", () -> new Item(new Item.Properties()
+    public static final DeferredItem<GoldenBeanItem> GOLDEN_BEAN = ITEMS.register("golden_bean", () -> new GoldenBeanItem(new Item.Properties()
             .food(new FoodProperties.Builder()
                     .alwaysEdible()
                     .nutrition(8)
@@ -72,10 +70,10 @@ public final class CBItems {
     public static final DeferredItem<UnstableIngotItem> UNSTABLE_INGOT = ITEMS.register("unstable_ingot", () -> new UnstableIngotItem(new Item.Properties()));
     public static final DeferredItem<Item> BEDROCKIUM_INGOT = ITEMS.register("bedrockium_ingot", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BEDROCKIUM_DUST = ITEMS.register("bedrockium_dust", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> DEEPSTEAL_INGOT = ITEMS.register("deepsteal_ingot", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> DEEP_STEEL_INGOT = ITEMS.register("deep_steel_ingot", () -> new Item(new Item.Properties()));
     public static final DeferredItem<DynamiteItem> DYNAMITE = ITEMS.register("dynamite", () -> new DynamiteItem(new Item.Properties()));
 
-    public static final DeferredItem<EmpItem> EMP = ITEMS.register("emp", () -> new EmpItem(new Item.Properties()));
+    //public static final DeferredItem<EmpItem> EMP = ITEMS.register("emp", () -> new EmpItem(new Item.Properties()));
 
     public static final DeferredItem<DivisionSigilItem> DIVISION_SIGIL = ITEMS.register("division_sigil", () -> new DivisionSigilItem(new Item.Properties()));
 

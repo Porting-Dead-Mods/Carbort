@@ -38,4 +38,5 @@ public class BeanCropBlock extends CropBlock {
     protected @NotNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE_BY_AGE[this.getAge(state)];
     }
+    // TODO: Increase bean score of chunk when growing
 }

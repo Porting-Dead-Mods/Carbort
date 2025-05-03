@@ -4,12 +4,15 @@ import com.leclowndu93150.carbort.Carbort;
 import com.leclowndu93150.carbort.CarbortConfig;
 import com.leclowndu93150.carbort.data.CBAttachmentTypes;
 import com.leclowndu93150.carbort.registries.CBTags;
-import com.leclowndu93150.carbort.utils.GuiUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.LayeredDraw;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 
 public final class BeanScoreOverlay {
     public static final ResourceLocation BEAN_SCORE_OUTLINE = Carbort.rl("bean_score");
@@ -17,7 +20,8 @@ public final class BeanScoreOverlay {
 
     public static final int HEIGHT = 48;
     public static final int WIDTH = 16;
-    public static final LayeredDraw.Layer OVERLAY = (guiGraphics, delta) -> {
+
+    public static final LayeredDraw.Layer HUD_OVERLAY = (guiGraphics, delta) -> {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
 
@@ -30,18 +34,32 @@ public final class BeanScoreOverlay {
             }
         }
 
-        if (itemStack != null) {
-            int score = player.getData(CBAttachmentTypes.BEAN_SCORE);
-            Carbort.LOGGER.debug("score client: {}", score);
-            int maxScore = CarbortConfig.maxBeanScore;
+        BlockPos pos = mc.player.getOnPos();
+
+        float maxScore = CarbortConfig.maxBeanScore;
+        float score = Math.min(maxScore, mc.level.getChunk(pos).getData(CBAttachmentTypes.BEAN_SCORE));
+        if (itemStack != null || mc.level.getBlockState(pos).is(CBTags.Blocks.SHOW_BEAN_SCORE)) {
             if (maxScore > 0) {
-                // TODO: USe blitSprite instead
                 float scale = 1.4f;
+                int width = (int) (WIDTH * scale);
+                int height = (int) (HEIGHT * scale);
                 int yPos = (int) (((float) guiGraphics.guiHeight() / 2) - (48 * scale));
                 guiGraphics.blitSprite(BEAN_SCORE_OUTLINE, (int) (16 * scale), (int) (48 * scale), 0, 0, 0, yPos, (int) (16 * scale), (int) (48 * scale));
-                int progress = (int) (HEIGHT * (float) (score / maxScore));
-                guiGraphics.blitSprite(BEAN_SCORE_LIQUID, (int) (WIDTH * scale), (int) (48 * scale), 0, 48 - progress, 0, yPos + 48 - progress, (int) (16 * scale), (int) (progress * scale));
+                int progress = (int) ((float) height * (score / maxScore));
+                guiGraphics.blitSprite(
+                        BEAN_SCORE_LIQUID,
+                        width,
+                        height,
+                        0,
+                        height - progress,
+                        0,
+                        yPos + height - progress,
+                        width,
+                        progress
+                );
             }
         }
+
     };
+
 }

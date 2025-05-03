@@ -17,7 +17,9 @@ public final class CBTags {
     }
 
     public static class Blocks {
+        public static final TagKey<Block> BEDROCK_REPLACEABLE = tag("bedrock_replaceable");
         public static final TagKey<Block> BEDROCK_DRILL_MINEABLE = tag("bedrock_drill_mineable");
+        public static final TagKey<Block> SHOW_BEAN_SCORE = tag("show_bean_score");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(Carbort.rl(name));

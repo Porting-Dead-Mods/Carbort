@@ -1,5 +1,6 @@
 package com.leclowndu93150.carbort.utils;
 
+import net.minecraft.core.NonNullList;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -8,6 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.wrapper.PlayerMainInvWrapper;
+
+import java.util.List;
 
 public class Utils {
     public static ItemStack insertItem(IItemHandler dest, ItemStack stack, boolean simulate) {
@@ -94,4 +97,11 @@ public class Utils {
             level.addFreshEntity(entityitem);
         }
     }
+
+    public static <T> NonNullList<T> listToNonNullList(List<T> list) {
+        NonNullList<T> nnl = NonNullList.create();
+        nnl.addAll(list);
+        return nnl;
+    }
+
 }

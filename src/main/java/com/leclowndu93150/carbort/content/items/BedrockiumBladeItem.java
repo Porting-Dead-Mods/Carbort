@@ -38,8 +38,8 @@ public class BedrockiumBladeItem extends SwordItem implements IFluidItem {
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        IFluidHandler energyStorage = CapabilityUtils.itemFluidHandler(stack);
-        return Math.round(13.0F - ((1 - ((float) energyStorage.getFluidInTank(0).getAmount() / energyStorage.getTankCapacity(0))) * 13.0F));
+        IFluidHandler fluidHandler = CapabilityUtils.itemFluidHandler(stack);
+        return Math.round(13.0F - ((1 - ((float) fluidHandler.getFluidInTank(0).getAmount() / fluidHandler.getTankCapacity(0))) * 13.0F));
     }
 
     //@Override

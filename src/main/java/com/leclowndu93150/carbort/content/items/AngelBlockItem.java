@@ -26,14 +26,14 @@ public class AngelBlockItem extends BlockItem {
 
             if (pLevel.isInWorldBounds(pos) && pLevel.getBlockState(pos).canBeReplaced()) {
                 pLevel.setBlock(pos, CBBlocks.ANGEL_BLOCK.get().defaultBlockState(), 3);
-                pPlayer.swing(pUsedHand);
-                if (!pPlayer.isCreative()) {
+                if (!pPlayer.hasInfiniteMaterials()) {
                     if (pUsedHand == InteractionHand.MAIN_HAND) {
                         pPlayer.getInventory().removeFromSelected(false);
                     } else {
                         pPlayer.getInventory().removeItem(Inventory.SLOT_OFFHAND, 1);
                     }
                 }
+                return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
             }
         }
         return super.use(pLevel, pPlayer, pUsedHand);

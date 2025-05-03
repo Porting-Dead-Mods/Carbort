@@ -1,7 +1,9 @@
 package com.leclowndu93150.carbort.content.entities;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.leclowndu93150.carbort.data.CBAttachmentTypes;
 import com.leclowndu93150.carbort.registries.CBEntityTypes;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -27,6 +29,7 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.*;
+import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.CommonHooks;
 import net.neoforged.neoforge.event.EventHooks;
@@ -87,7 +90,7 @@ public class BeanEntity extends Mob {
     }
 
     public int getSize() {
-        return (Integer)this.entityData.get(ID_SIZE);
+        return this.entityData.get(ID_SIZE);
     }
 
     public void addAdditionalSaveData(CompoundTag compound) {
@@ -139,6 +142,10 @@ public class BeanEntity extends Mob {
 
         this.wasOnGround = this.onGround();
         this.decreaseSquish();
+
+        ChunkAccess chunk = level().getChunk(getOnPos());
+        int increase = Math.round(random.nextInt(0, 1000) / 1000f);
+        chunk.setData(CBAttachmentTypes.BEAN_SCORE, chunk.getData(CBAttachmentTypes.BEAN_SCORE)+ increase);
     }
 
     protected void decreaseSquish() {

@@ -32,6 +32,7 @@ public final class DataGatherer {
         generator.addProvider(assets, new CBLangProvider(packOutput));
 
         generator.addProvider(data, new CBRecipesProvider(packOutput, lookupProvider));
+        generator.addProvider(data, new CBDataPackRegistryProvider(packOutput, lookupProvider));
         CBBlockTagProvider blockTagProvider = new CBBlockTagProvider(packOutput, lookupProvider, fileHelper);
         generator.addProvider(data, blockTagProvider);
         generator.addProvider(data, new CBItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter()));
